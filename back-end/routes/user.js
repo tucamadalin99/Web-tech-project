@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers').user;
+const userController = require('../controllers/user');
 const passport = require('passport');
 
 
@@ -57,4 +57,4 @@ function checkNotAuth(req, res, next) {
     res.redirect('/api/notAuth');
 }
 
-module.exports = router;
+module.exports = {router, checkAuth, checkNotAuth};
