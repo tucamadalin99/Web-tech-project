@@ -1,6 +1,7 @@
 const UserModel = require('../models').User;
 const validateRegister = require('./validations/validate-register');
 const bcrypt = require('bcrypt');
+const { User } = require('../models');
 
 const controller = {
     //Controller object for user operations
@@ -25,6 +26,16 @@ const controller = {
         } else {
             res.status(400).send(validationErrors);
         }
+    },
+
+    getAllUsers: async (req, res) => {
+        try {
+             const users = await UserModel.findAll();
+        res.status(200).send(users);
+        } catch {
+            res.status(500).send({message:"Server error!"})
+        } 
+
     }
 }
 

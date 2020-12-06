@@ -25,6 +25,15 @@ const controller = {
         } else {
             res.status(400).send(errors);
         }
+    },
+
+    getAllProducts: async (req, res) => {
+        try {
+            const products = await ProductModel.findAll();
+            res.status(200).send(products);
+        } catch {
+            res.status(500).send({message:"Server error!"})
+       }
     }
 }
 

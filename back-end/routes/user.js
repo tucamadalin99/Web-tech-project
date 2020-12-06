@@ -42,6 +42,8 @@ router.get('/logoutInfo', async (req, res) => {
     res.status(403).send({message:"Succesfully logged out."})
 })
 
+router.get('/getAllUsers', checkNotAuth, userController.getAllUsers);
+
 
 function checkAuth(req, res, next) {
     if (req.isAuthenticated()) {
