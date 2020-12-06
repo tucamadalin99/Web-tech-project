@@ -12,6 +12,7 @@ const controller = {
             price: req.body.price,
             count: req.body.count,
             userId: currentUser.id,
+            status: "available",
             categoryId: req.body.categoryId
         }
         const errors = validateProduct(newProduct);

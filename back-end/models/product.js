@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
             expireDate: DataTypes.STRING,
             brand: DataTypes.STRING,
             price: DataTypes.FLOAT,
-            count: DataTypes.INTEGER
+            count: DataTypes.INTEGER,
+            status:DataTypes.STRING
         }
     )
 }
