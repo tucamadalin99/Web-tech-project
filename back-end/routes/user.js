@@ -44,6 +44,8 @@ router.get('/logoutInfo', async (req, res) => {
 
 router.get('/getAllUsers', checkNotAuth, userController.getAllUsers);
 
+router.put('/claimProduct/:userId/:id', checkNotAuth, userController.claimProduct)
+
 
 function checkAuth(req, res, next) {
     if (req.isAuthenticated()) {
