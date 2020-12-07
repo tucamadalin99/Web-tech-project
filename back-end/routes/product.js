@@ -6,5 +6,6 @@ const checkNotAuth = require('./user').checkNotAuth;
 
 
 router.post('/addProduct', checkNotAuth, productController.addProduct);
+router.get('/getAllProducts', checkNotAuth, productController.getAllProducts);
 
 module.exports = router;
