@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="01efc992-8eee-4669-81de-67f377394308" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/back-end/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Register/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Register/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lA6BGtCxGVnnfGus0FEh3PZ2FY" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Facultate\Tehnologii Web\Waste App\front-end" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/front-end/waste-app/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="01efc992-8eee-4669-81de-67f377394308" name="Default Changelist" comment="" />
+      <created>1607027410490</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607027410490</updated>
+      <workItem from="1607027411736" duration="407000" />
+      <workItem from="1607027842335" duration="5600000" />
+      <workItem from="1607033727070" duration="9000" />
+      <workItem from="1607071301693" duration="93000" />
+      <workItem from="1607284501417" duration="5060000" />
+      <workItem from="1607290043768" duration="1004000" />
+      <workItem from="1607330147066" duration="19000" />
+    </task>
+    <task id="LOCAL-00001" summary="Front end setup + Login + Register">
+      <created>1607033418321</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607033418321</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Front end setup + Login + Register">
+      <created>1607033460310</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1607033460310</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Front end setup + Login + Register" />
+    <option name="LAST_COMMIT_MESSAGE" value="Front end setup + Login + Register" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2517" y="284" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607028359187">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2517" y="284" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607028359187" />
+    <state x="2660" y="298" key="FileChooserDialogImpl" timestamp="1607071385894">
+      <screen x="1920" y="3" width="1920" height="1080" />
+    </state>
+    <state x="2660" y="298" key="FileChooserDialogImpl/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607071385894" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1607291048174">
+      <screen x="1920" y="3" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607291048174" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1607291048174">
+      <screen x="1920" y="3" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.center/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607291048174" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1607291048174">
+      <screen x="1920" y="3" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.left/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607291048174" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1607291048174">
+      <screen x="1920" y="3" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.right/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607291048174" />
+    <state x="2381" y="185" key="SettingsEditor" timestamp="1607028434691">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2381" y="185" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607028434691" />
+    <state x="2703" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1607033452106">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2703" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607033452106" />
+    <state x="2587" y="244" width="585" height="592" key="find.popup" timestamp="1607028824258">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2587" y="244" width="585" height="592" key="find.popup/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607028824258" />
+    <state x="2543" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1607330161052">
+      <screen x="1920" y="1" width="1920" height="1080" />
+    </state>
+    <state x="2543" y="238" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607071392135" />
+    <state x="2543" y="236" width="672" height="678" key="search.everywhere.popup/3840.-8.1536.864/-1920.3.1920.1080/1920.1.1920.1080/0.0.1920.1080@1920.1.1920.1080" timestamp="1607330161051" />
+  </component>
+</project>

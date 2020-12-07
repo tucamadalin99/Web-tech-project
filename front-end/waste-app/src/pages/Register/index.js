@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select'
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+import axios from 'axios';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,11 +49,57 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Register() {
     const classes = useStyles();
-    const [userType,setUserType] = React.useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [address, setAddress] = useState('');
+    const [type, setType] = useState('');
 
+    const [open, setOpen] = useState(false);
+    const [toastr,setToastr]=useState('');
+
+    const data = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        address: address,
+        type: type,
+    }
+
+    let Toast = (props) => {
+        const {severity, message} = props;
+        return (
+            <Alert severity={severity} onClose={() => setOpen(false)}>{message}</Alert>
+        )
+    }
     const handleChange = (event) => {
-        setUserType(event.target.value);
+        setType(event.target.value);
     };
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    let axiosToastr;
+
+    const handleRegisterData = () => {
+        axios.post('http://localhost:8080/api/register', data)
+            .then(() => {
+                console.log('Data send successfully', data);
+                setOpen(true);
+                // setToastr (<Toast severity={'success'} message={"Register successfully"}/>);
+            })
+            .catch((error) => {
+                const values = Object.values(error.response.data);
+                let message='';
+                console.log('Message:',values);
+                setOpen(true);
+                // setToastr(<Toast severity={"error"} message={values}/>);
+                setToastr(values);
+            })
+    }
     return (
         <div className={'waste-app-body'}>
             <Container component="main" maxWidth="xs" className={'waste-app-register-container'}>
@@ -64,6 +118,8 @@ export default function Register() {
                                     autoComplete="fname"
                                     name="firstName"
                                     variant="outlined"
+                                    value={firstName}
+                                    onChange={(event) => setFirstName(event.target.value)}
                                     required
                                     fullWidth
                                     id="firstName"
@@ -76,6 +132,8 @@ export default function Register() {
                                     variant="outlined"
                                     required
                                     fullWidth
+                                    value={lastName}
+                                    onChange={(event => setLastName(event.target.value))}
                                     id="lastName"
                                     label="Last Name"
                                     name="lastName"
@@ -87,6 +145,8 @@ export default function Register() {
                                     variant="outlined"
                                     required
                                     fullWidth
+                                    value={email}
+                                    onChange={(event => setEmail(event.target.value))}
                                     id="email"
                                     label="Email Address"
                                     name="email"
@@ -98,6 +158,8 @@ export default function Register() {
                                     variant="outlined"
                                     required
                                     fullWidth
+                                    value={password}
+                                    onChange={(event => setPassword(event.target.value))}
                                     name="password"
                                     label="Password"
                                     type="password"
@@ -110,6 +172,8 @@ export default function Register() {
                                     variant="outlined"
                                     required
                                     fullWidth
+                                    value={address}
+                                    onChange={(event => setAddress(event.target.value))}
                                     name="adress"
                                     label="Adress"
                                     id="adress"
@@ -122,27 +186,29 @@ export default function Register() {
                                     <Select
                                         labelId="demo-simple-select-outlined-label"
                                         id="demo-simple-select-outlined"
-                                        value={userType}
+                                        value={type}
                                         onChange={handleChange}
                                         label="Type"
                                     >
                                         <MenuItem value="">
                                             <em>None</em>
                                         </MenuItem>
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-                                        <MenuItem value={30}>Thirty</MenuItem>
+                                        <MenuItem value={'Mixed'}>Mixed</MenuItem>
+                                        <MenuItem value={'Vegetarian'}>Vegetarian</MenuItem>
+                                        <MenuItem value={'Vegan'}>Vegan</MenuItem>
+                                        <MenuItem value={'Carnivor'}>Carnivor</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>
 
                         </Grid>
                         <Button
-                            type="submit"
+
                             fullWidth
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={handleRegisterData}
                         >
                             Register
                         </Button>
@@ -155,8 +221,14 @@ export default function Register() {
                         </Grid>
                     </form>
                 </div>
-
+                {/*<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>*/}
+                {/*    {toastr}*/}
+                {/*</Snackbar>*/}
             </Container>
+
+            {toastr.map(item => <p key={item.id}>{item}</p>)}
+
+
         </div>
 
     );
