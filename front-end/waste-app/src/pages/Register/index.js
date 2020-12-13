@@ -97,13 +97,13 @@ export default function Register() {
                 // setToastr (<Toast severity={'success'} message={"Register successfully"}/>);
             })
             .catch((error) => {
-                const values = Object.values(error.response.data);
+                const values = error.response.data;
                 let message='';
                 console.log('Message:',values);
                // setOpen(true);
-                values.map(el => {
-                    toast.error(el);
-                });
+                // values.map(el => {
+                //     toast.error(el);
+                // });
                 // setToastr(<Toast severity={"error"} message={values}/>);
                // setToastr(values);
             })
