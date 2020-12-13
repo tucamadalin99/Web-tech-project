@@ -32,7 +32,9 @@ const controller = {
 
     getAllUsers: async (req, res) => {
         try {
-            const users = await UserModel.findAll();
+            const users = await UserModel.findAll({
+                include: [ProductModel,GroupModel]
+            });
             res.status(200).send(users);
         } catch {
             res.status(500).send({ message: "Server error!" })
@@ -40,34 +42,6 @@ const controller = {
 
     },
 
-    claimProduct: async (req, res) => {
-        const currentUser = await req.user;
-        console.log(currentUser)
-        const userProduct = await ProductModel.findOne({
-            where: {
-                userId: req.params.userId,
-                id: req.params.id
-            }
-        })
-        if (userProduct && currentUser.id !== userProduct.userId) {
-            if (userProduct.status === 'available') {
-                userProduct.update({
-                    status: currentUser.firstName + " " + currentUser.lastName
-                }).then(() => {
-                    res.status(200).send({ message: "The item has been claimed!" });
-                }).catch(err => {
-                    res.status(500).send({ message: "Server error we apologise for the inconvenience" });
-                })
-            } else {
-                if (currentUser.firstName + " " + currentUser.lastName === userProduct.status) {
-                    res.status(400).send({ message: "You already claimed this item" });
-                } else
-                    res.status(403).send({ message: "The item has already been claimed by: " + userProduct.status })
-            }
-        } else {
-            res.status(400).send({ message: "Product not found or you are trying to claim your own items" })
-        }
-    },
 
     createGroup: async (req, res) => {
         const currentUser = await req.user;
