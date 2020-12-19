@@ -91,6 +91,8 @@ body:      {
  ``
  DELETE: localhost:8080/api/deleteProduct/:id (Deletes a product from your account)
  ``
+ **
+ 
  ``
  DELETE: localhost:8080/api/logout (Logs out from the user session)
  ``
