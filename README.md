@@ -11,7 +11,7 @@
 
 Short description of the API so far: 
 
-The users can register with an encrypted password for better security. They can login in their user account or logout, add products that they want to give away and categorise them or delete them if they decide they want to keep them. They can see a list of the other users that are giving away food and they can claim an item if they want to take it. They can unclaim it if they deicide they don't want it anymore. 
+The users can register with an encrypted password for better security. They can login in their user account or logout, add products that they want to give away and categorise them or delete them if they decide they want to keep them. They can see a list of the other users that are giving away food and they can claim an item if they want to take it. They can unclaim it if they deicide they don't want it anymore. They can't claim products that are already claimed by another user.
 The users can create a group and label it by the types of people that are in the group. After they create it, they can add people in the group.
 
 Entry point: server.js
@@ -28,4 +28,26 @@ GET: localhost:8080/api/getAllUsers - Returns a response json with all the users
 
 ``
 GET: localhost:8080/api/getAllProducts - Returns a json with just all the items available to donate in the app.(Safeguarded by middleware, you have to login)
+``
+
+Note: A few more get routes are used in the API for login/logout redirection purposes only
+
+``
+POST: localhost:8080/api/register(Create a user account)
+body: {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password,
+            address: req.body.address,
+            type: req.body.type
+        }
+``
+
+``
+POST: localhost:8080/api/login(Login to your account)
+body: {
+         "email":"req.body.email"
+         "password":"req.body.password"
+      }
 ``
