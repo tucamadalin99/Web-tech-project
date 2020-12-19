@@ -51,3 +51,48 @@ body: {
          "password":"req.body.password"
       }
 ``
+
+``
+POST: localhost:8080/api/createGroup(Create a group)
+body: {
+         "groupName":"req.body.groupName"
+         "groupType":"req.body.groupType"
+       }
+``
+
+``
+POST: localhost:8080/api/addUsersToGroup (Add multiple or one user to group)
+body: {
+         "userId":"req.body.users"(Recieves an array of user id's)
+         "groupId":"req.body.groupId"
+      }
+``
+
+``
+POST: localhost:8080/api/addProduct
+body:      { 
+            name: req.body.name,
+            expireDate: req.body.expireDate,
+            brand: req.body.brand,
+            price: req.body.price,
+            count: req.body.count,
+            categoryId: req.body.categoryId
+            }
+ ``
+ 
+ ``
+ PUT: localhost:8080/api/claimProduct/:userId/:id (endpoint params: userId, id)(Claims product if it's available)
+ ``
+ 
+ ``
+ PUT: localhost:8080/api/unclaimProduct/:userId/:id(params: userId, id)(Unclaims the previously product claimed by you)
+ ``
+ 
+ ``
+ DELETE: localhost:8080/api/deleteProduct/:id (Deletes a product from your account)
+ ``
+ ``
+ DELETE: localhost:8080/api/logout (Logs out from the user session)
+ ``
+ 
+ 
