@@ -15,8 +15,12 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select'
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Toastr from 'toastr'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import axios from 'axios';
+
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -57,7 +61,8 @@ export default function Register() {
     const [type, setType] = useState('');
 
     const [open, setOpen] = useState(false);
-    const [toastr,setToastr]=useState('');
+    const [toastr, setToastr] = useState('');
+    toast.configure();
 
     const data = {
         firstName: firstName,
@@ -92,12 +97,15 @@ export default function Register() {
                 // setToastr (<Toast severity={'success'} message={"Register successfully"}/>);
             })
             .catch((error) => {
-                const values = Object.values(error.response.data);
+                const values = error.response.data;
                 let message='';
                 console.log('Message:',values);
-                setOpen(true);
+               // setOpen(true);
+                // values.map(el => {
+                //     toast.error(el);
+                // });
                 // setToastr(<Toast severity={"error"} message={values}/>);
-                setToastr(values);
+               // setToastr(values);
             })
     }
     return (
@@ -226,7 +234,7 @@ export default function Register() {
                 {/*</Snackbar>*/}
             </Container>
 
-            {/*{toastr.map(item => <p key={item.id}>{item}</p>)}*/}
+            {/* {toastr.map(item => <p key={item.id}>{item}</p>)} */}
 
 
         </div>

@@ -44,7 +44,9 @@ router.get('/logoutInfo', async (req, res) => {
 
 router.get('/getAllUsers', checkNotAuth, userController.getAllUsers);
 
-router.put('/claimProduct/:userId/:id', checkNotAuth, userController.claimProduct)
+router.post('/createGroup',checkNotAuth, userController.createGroup);
+
+router.post('/addUsersToGroup', checkNotAuth, userController.addUsersToGroup);
 
 
 function checkAuth(req, res, next) {
