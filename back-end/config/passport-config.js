@@ -2,7 +2,9 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 
 async function initPassport(passport, getUserByEmail, getUserById) {
+    console.log('hey')
     const authUser = async (email, password, done) => {
+        console.log("AICI")
         const user = await getUserByEmail(email);
         if (user == null) {
             return done(null, false, { message: "No user found!" });
