@@ -20,12 +20,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01efc992-8eee-4669-81de-67f377394308" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/back-end/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/FoodItem/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/FoodItem/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/Navigation/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/Navigation/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Achievements/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Achievements/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Food/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Food/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Homepage/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Homepage/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Profile/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Profile/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/components/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Register/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Register/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +68,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,6 +80,12 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Facultate\Tehnologii Web\Waste App\front-end\waste-app\src\pages\Dashboard" />
+      <recent name="D:\Facultate\Tehnologii Web\Waste App\front-end\waste-app\src\pages\Profile" />
+      <recent name="D:\Facultate\Tehnologii Web\Waste App\front-end\waste-app\src\pages\Groups" />
+      <recent name="D:\Facultate\Tehnologii Web\Waste App\front-end\waste-app\src\pages\Food" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Facultate\Tehnologii Web\Waste App\front-end" />
     </key>
@@ -101,6 +124,9 @@
       <workItem from="1607284501417" duration="5060000" />
       <workItem from="1607290043768" duration="1004000" />
       <workItem from="1607330147066" duration="19000" />
+      <workItem from="1607723202164" duration="726000" />
+      <workItem from="1607724212000" duration="117000" />
+      <workItem from="1607891301439" duration="6032000" />
     </task>
     <task id="LOCAL-00001" summary="Front end setup + Login + Register">
       <created>1607033418321</created>
@@ -143,25 +169,34 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2517" y="284" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607028359187" />
-    <state x="2660" y="298" key="FileChooserDialogImpl" timestamp="1607071385894">
+    <state x="2660" y="298" key="FileChooserDialogImpl" timestamp="1607894470688">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
+    <state x="2660" y="298" key="FileChooserDialogImpl/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607894470688" />
     <state x="2660" y="298" key="FileChooserDialogImpl/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607071385894" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1607291048174">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1607898410891">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607898410891" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1607724119444" />
     <state width="1877" height="295" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607291048174" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1607291048174">
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1607898410890">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.center/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607898410890" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1607724119444" />
     <state width="1877" height="295" key="GridCell.Tab.0.center/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607291048174" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1607291048174">
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1607898410889">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.left/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607898410889" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1607724119444" />
     <state width="1877" height="295" key="GridCell.Tab.0.left/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607291048174" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1607291048174">
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1607898410891">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.right/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607898410891" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1607724119444" />
     <state width="1877" height="295" key="GridCell.Tab.0.right/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607291048174" />
     <state x="2381" y="185" key="SettingsEditor" timestamp="1607028434691">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -175,9 +210,15 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2587" y="244" width="585" height="592" key="find.popup/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607028824258" />
-    <state x="2543" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1607330161052">
-      <screen x="1920" y="1" width="1920" height="1080" />
+    <state x="2536" y="252" key="run.anything.popup" timestamp="1607896720719">
+      <screen x="1920" y="3" width="1920" height="1080" />
     </state>
+    <state x="2536" y="252" key="run.anything.popup/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607896720719" />
+    <state x="2543" y="238" width="672" height="678" key="search.everywhere.popup" timestamp="1607891508112">
+      <screen x="1920" y="3" width="1920" height="1080" />
+    </state>
+    <state x="2543" y="238" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607891508112" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1607724326166" />
     <state x="2543" y="238" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607071392135" />
     <state x="2543" y="236" width="672" height="678" key="search.everywhere.popup/3840.-8.1536.864/-1920.3.1920.1080/1920.1.1920.1080/0.0.1920.1080@1920.1.1920.1080" timestamp="1607330161051" />
   </component>
