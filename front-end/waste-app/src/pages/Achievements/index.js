@@ -4,7 +4,7 @@ import {FacebookShareCount} from 'react-share'
 const Achievements =() => {
     return(
         <div>Achievements page
-            <FacebookShareCount url={shareUrl} />
+            <FacebookShareCount url={'https://flaviocopes.com/axios-credentials/'} />
         </div>
     )
 }

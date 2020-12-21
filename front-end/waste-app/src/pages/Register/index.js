@@ -13,10 +13,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select'
-import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import Toastr from 'toastr'
-import { ToastContainer, toast } from 'react-toastify';
+import {useHistory, withRouter} from "react-router-dom";
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import axios from 'axios';
@@ -51,7 +50,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Register() {
+const Register = () => {
+    const history = useHistory();
     const classes = useStyles();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -61,7 +61,6 @@ export default function Register() {
     const [type, setType] = useState('');
 
     const [open, setOpen] = useState(false);
-    const [toastr, setToastr] = useState('');
     toast.configure();
 
     const data = {
@@ -83,29 +82,31 @@ export default function Register() {
         setType(event.target.value);
     };
 
-    const handleClose = () => {
-        setOpen(false);
-    }
-
-    let axiosToastr;
 
     const handleRegisterData = () => {
-        axios.post('http://localhost:8080/api/register', data)
+        axios.post('http://localhost:8080/api/register', data, {withCredentials:true})
             .then(() => {
                 console.log('Data send successfully', data);
+                history.push('/');
                 setOpen(true);
                 // setToastr (<Toast severity={'success'} message={"Register successfully"}/>);
             })
             .catch((error) => {
                 const values = error.response.data;
-                let message='';
-                console.log('Message:',values);
-               // setOpen(true);
-                // values.map(el => {
-                //     toast.error(el);
-                // });
-                // setToastr(<Toast severity={"error"} message={values}/>);
-               // setToastr(values);
+                console.log('Values:', values);
+                Object.values(values).map((value) => {
+                    toast.error(value, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: false,
+                        progress: undefined,
+                    });
+
+                })
+
             })
     }
     return (
@@ -222,22 +223,20 @@ export default function Register() {
                         </Button>
                         <Grid container justify="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="#" variant="body2" onClick={() => history.push('/login')}>
                                     Already have an account? Sign in
                                 </Link>
                             </Grid>
                         </Grid>
                     </form>
                 </div>
-                {/*<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>*/}
-                {/*    {toastr}*/}
-                {/*</Snackbar>*/}
-            </Container>
 
-            {/* {toastr.map(item => <p key={item.id}>{item}</p>)} */}
+            </Container>
 
 
         </div>
 
     );
 }
+
+export default withRouter(Register);
