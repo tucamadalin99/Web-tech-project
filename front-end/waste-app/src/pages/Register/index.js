@@ -226,7 +226,7 @@ export default function Register() {
                 {/*</Snackbar>*/}
             </Container>
 
-            {toastr.map(item => <p key={item.id}>{item}</p>)}
+            {/*{toastr.map(item => <p key={item.id}>{item}</p>)}*/}
 
 
         </div>
