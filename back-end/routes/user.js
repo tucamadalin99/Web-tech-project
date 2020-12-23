@@ -28,6 +28,10 @@ router.delete('/logout', checkNotAuth, async (req, res) => {
     res.redirect('/api/logoutInfo');
 })
 
+router.get('/getUser', async(req,res) => {
+    const user=await req.user;
+    res.status(200).send(await req.user)
+})
 
 router.get('/notAuth', async (req, res) => {
     res.status(403).send({message:"You are not logged in."})

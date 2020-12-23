@@ -50,7 +50,9 @@ const Login = () => {
     const handleLoginData = (event) => {
         event.preventDefault();
         axios.post(`http://localhost:8080/api/login`, loginData, {withCredentials:true})
-            .then(() => {
+            .then((response) => {
+                const {data}=response;
+                localStorage.setItem('userId',data.passport.user);
                 history.push('/');
             })
             .catch((error) => {

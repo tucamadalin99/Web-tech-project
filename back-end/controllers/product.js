@@ -17,8 +17,8 @@ const controller = {
         }
         const errors = validateProduct(newProduct);
         if (Object.keys(errors).length === 0) {
-            ProductModel.create(newProduct).then(() => {
-                res.status(201).send({ message: "Product added succesfully!" });
+            ProductModel.create(newProduct).then((obj) => {
+                res.status(201).send({ message: "Product added succesfully!",obj });
             }).catch((err) => {
                 res.status(500).send(err)
             })

@@ -4,7 +4,7 @@
  *
  */
 
-import React, {  useState } from 'react';
+import React, {useState} from 'react';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -20,12 +20,12 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import ChatIcon from '@material-ui/icons/Chat';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 import KitchenIcon from '@material-ui/icons/Kitchen';
 import GroupIcon from '@material-ui/icons/Group';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import {makeStyles} from '@material-ui/core/styles';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles({
     root: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     },
 });
 
-const Navigation = ({ children }) => {
+const Navigation = ({children}) => {
     const classes = useStyles();
     const [state, setState] = React.useState({
         left: false,
@@ -51,8 +51,10 @@ const Navigation = ({ children }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
-    const logout = () => {};
-    const handleClose = () => {};
+    const logout = () => {
+    };
+    const handleClose = () => {
+    };
 
     const toggleDrawer = (anchor, open) => event => {
         if (
@@ -62,7 +64,7 @@ const Navigation = ({ children }) => {
             return;
         }
 
-        setState({ ...state, [anchor]: open });
+        setState({...state, [anchor]: open});
     };
 
     const drawerOptions = [
@@ -109,12 +111,12 @@ const Navigation = ({ children }) => {
                     <List>
                         <ListItem button component={Link} to={'/profile'}>
                             <ListItemIcon>
-                                <AccountCircleIcon />
+                                <AccountCircleIcon/>
                             </ListItemIcon>
                             <ListItemText>Profile</ListItemText>
                         </ListItem>
                     </List>
-                    <Divider />
+                    <Divider/>
                 </Grid>
                 <Grid item xs={12}>
                     <List>
@@ -128,23 +130,34 @@ const Navigation = ({ children }) => {
                                 <ListItemIcon>
                                     {/* eslint-disable-next-line no-nested-ternary */}
                                     {index % 3 === 0 ? (
-                                        <KitchenIcon />
+                                        <KitchenIcon/>
                                     ) : index % 3 === 1 ? (
-                                        <GroupIcon />
+                                        <GroupIcon/>
                                     ) : (
-                                        <EmojiEventsIcon />
+                                        <EmojiEventsIcon/>
                                     )}
                                 </ListItemIcon>
-                                <ListItemText primary={value.text} />
+                                <ListItemText primary={value.text}/>
                             </ListItem>
                         ))}
                     </List>
-                    <Divider />
+                    <Divider/>
                 </Grid>
 
             </Grid>
         </div>
     );
+
+
+    const handleLogout = () => {
+        axios.delete(`http://localhost:8080/api/logout`, {useCredentials: true})
+            .then(() => {
+                console.log('Logout!');
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
 
     return (
         <>
@@ -157,7 +170,7 @@ const Navigation = ({ children }) => {
                             color="inherit"
                             onClick={toggleDrawer('left', true)}
                         >
-                            <MenuIcon />
+                            <MenuIcon/>
                         </IconButton>
                         <Typography variant="h6">Food waste app</Typography>
 
@@ -176,11 +189,11 @@ const Navigation = ({ children }) => {
                                 aria-label="account of current user"
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
-                                // onClick={handleMenu}
+                                onClick={handleLogout}
                                 color="inherit"
                                 className={classes.logoutButton}
                             >
-                                <ExitToAppIcon />
+                                <ExitToAppIcon/>
                             </IconButton>
                         </>
                     )}
@@ -191,7 +204,6 @@ const Navigation = ({ children }) => {
         </>
     );
 };
-
 
 
 export default Navigation;

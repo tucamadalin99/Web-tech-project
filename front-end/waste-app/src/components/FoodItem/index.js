@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -9,9 +9,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import DoneIcon from '@material-ui/icons/Done';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import {FacebookShareButton, FacebookShareCount} from 'react-share';
+import {FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton} from 'react-share';
+import axios from 'axios';
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './style.scss';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,10 +43,41 @@ const useStyles = makeStyles((theme) => ({
 
 const FoodItem = (props) => {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
+    const {name, expireDate, brand, price, count, id} = props;
+    const [isOpened, setIsOpened] = useState(false);
+    const userId=localStorage.getItem('userId');
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
+    const shareUrl = `http://food-waste.com/${id}`;
+    console.log('Share URL:',shareUrl);
+    console.log('User id:',userId,'id:',id);
+    const postTitle = `Hi everyone! I have some spare ${name} that I want to share with you!`
+    toast.configure();
+    const handleClaim = () => {
+        axios.put(`http://localhost:8080/api/claimProduct/${userId}/${id}`,{userId:userId,id:id},{withCredentials: true})
+            .then(() =>{
+                toast.success(`Product ${name} claimed succesfully`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+                console.log('Product claimed successfully')
+            })
+            .catch((error) => {
+                console.log('Error:',error.response.data.message);
+                toast.error(error.response.data.message, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+            })
     };
 
     return (
@@ -49,7 +85,7 @@ const FoodItem = (props) => {
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
+                        {name.charAt(0)}
                     </Avatar>
                 }
                 action={
@@ -57,22 +93,45 @@ const FoodItem = (props) => {
                         <MoreVertIcon/>
                     </IconButton>
                 }
-                title="Food title"
-                subheader="Expiry Date"
+                title={name}
+                subheader={expireDate}
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    Food item description
-                    <FacebookShareCount url={'https://get.msguides.com/office2019.txt'} />
+                    {brand} {price} {count}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon/>
+                    <DoneIcon onClick={handleClaim}/>
                 </IconButton>
                 <IconButton aria-label="share">
-                    <ShareIcon/>
+                    <ShareIcon onClick={() => setIsOpened(!isOpened)}/>
                 </IconButton>
+                {isOpened && (
+                    <>
+                        <IconButton>
+                            <FacebookShareButton
+                                url={shareUrl}
+                                quote={postTitle}
+                                className="Demo__some-network__share-button"
+                            >
+                                <FacebookIcon size={32} round/>
+                            </FacebookShareButton>
+                        </IconButton>
+                        <IconButton>
+                            <TwitterShareButton
+                                url={shareUrl}
+                                title={postTitle}
+                                className="Demo__some-network__share-button"
+                            >
+                                <TwitterIcon size={32} round/>
+                            </TwitterShareButton>
+                        </IconButton>
+
+                    </>
+                )}
+
             </CardActions>
 
         </Card>
