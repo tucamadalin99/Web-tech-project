@@ -148,11 +148,11 @@ const Navigation = ({children}) => {
         </div>
     );
 
-
     const handleLogout = () => {
         axios.delete(`http://localhost:8080/api/logout`, {useCredentials: true})
             .then(() => {
                 console.log('Logout!');
+                document.cookie="cookieLogin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             })
             .catch((error) => {
                 console.log(error);

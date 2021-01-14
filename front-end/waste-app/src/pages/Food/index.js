@@ -65,6 +65,7 @@ const Food = () => {
             })
     }, [])
 
+
     const handleChange = (event) => {
         setCategory(event.target.value);
     }

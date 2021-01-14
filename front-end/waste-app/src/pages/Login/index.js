@@ -53,6 +53,7 @@ const Login = () => {
             .then((response) => {
                 const {data}=response;
                 localStorage.setItem('userId',data.passport.user);
+                localStorage.setItem('isAuth',true);
                 history.push('/');
             })
             .catch((error) => {

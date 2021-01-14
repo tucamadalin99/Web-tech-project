@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const FoodItem = (props) => {
     const classes = useStyles();
-    const {name, expireDate, brand, price, count, id} = props;
+    const {name, expireDate, brand, price, count, id, objectUserId} = props;
     const [isOpened, setIsOpened] = useState(false);
     const userId=localStorage.getItem('userId');
 
@@ -52,7 +52,7 @@ const FoodItem = (props) => {
     const postTitle = `Hi everyone! I have some spare ${name} that I want to share with you!`
     toast.configure();
     const handleClaim = () => {
-        axios.put(`http://localhost:8080/api/claimProduct/${userId}/${id}`,{userId:userId,id:id},{withCredentials: true})
+        axios.put(`http://localhost:8080/api/claimProduct/${objectUserId}/${id}`,{userId:userId,id:id},{withCredentials: true})
             .then(() =>{
                 toast.success(`Product ${name} claimed succesfully`, {
                     position: "top-right",
@@ -98,7 +98,13 @@ const FoodItem = (props) => {
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {brand} {price} {count}
+                Brand: {brand}
+            </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    Price: {price}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    Count: {count}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
