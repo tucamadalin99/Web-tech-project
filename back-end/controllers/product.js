@@ -61,6 +61,7 @@ const controller = {
                     res.status(403).send({ message: "The item has already been claimed by: " + userProduct.status })
             }
         } else {
+            if (!userProduct || userProduct.userId === currentUser.id)
             res.status(400).send({ message: "Product not found or you are trying to claim your own items" })
         }
     },
