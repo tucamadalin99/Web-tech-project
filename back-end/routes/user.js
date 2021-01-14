@@ -52,6 +52,8 @@ router.post('/createGroup',checkNotAuth, userController.createGroup);
 
 router.post('/addUsersToGroup', checkNotAuth, userController.addUsersToGroup);
 
+router.put('/updateUser', checkNotAuth, userController.updateUser);
+
 
 function checkAuth(req, res, next) {
     if (req.isAuthenticated()) {

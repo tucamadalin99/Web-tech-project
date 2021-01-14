@@ -78,6 +78,29 @@ const controller = {
         } catch (err) {
             res.status(500).send({message:"Server error!"})
         }
+    },
+
+    updateUser: async (req, res) => {
+        let currentUser = await req.user;
+        let hashedPass;
+        if (req.body.password !== null) {
+        let password = req.body.password;
+        hashedPass = await bcrypt.hash(password, 10);
+        } else {
+            hashedPass = currentUser.password;
+        }
+        currentUser.update({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: hashedPass,
+            address: req.body.address,
+            type: req.body.type
+        }).then(() => {
+            res.status(200).send({message: "User succesfully updated!"})
+        }).catch(() => {
+            res.status(500).send({message: "Server error"})
+        })
     }
 }
 
