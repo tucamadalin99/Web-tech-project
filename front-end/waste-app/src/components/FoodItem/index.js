@@ -48,7 +48,6 @@ const FoodItem = (props) => {
     const userId=localStorage.getItem('userId');
 
     const shareUrl = `http://food-waste.com/${id}`;
-    console.log('Share URL:',shareUrl);
     console.log('User id:',userId,'id:',id);
     const postTitle = `Hi everyone! I have some spare ${name} that I want to share with you!`
     toast.configure();
@@ -67,6 +66,7 @@ const FoodItem = (props) => {
                 console.log('Product claimed successfully')
             })
             .catch((error) => {
+                console.log('User id:',userId,'id:',id);
                 console.log('Error:',error.response.data.message);
                 toast.error(error.response.data.message, {
                     position: "top-right",
