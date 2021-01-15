@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -38,9 +38,34 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
     const classes = useStyles();
+    localStorage.setItem("isAuth",false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
+
+    let cookie = document.cookie.split(";");
+    const [isAuth,setIsAuth]=useState(false);
+    // const [cookieHook,setCookieHook]=useState([]);
+    // console.log('Cookie out:',cookieHook);
+    // useEffect( () => {
+    //     if(Array.isArray(cookieHook)) {
+    //         cookie.forEach(cookie => {
+    //             if(cookie.includes("cookieLogin")) {
+    //                 setCookieHook(cookie);
+    //             }
+    //         })
+    //     }
+    //     else {
+    //         setCookieHook(cookieHook);
+    //     }
+    //
+    //     console.log('Cookie in:',cookieHook);
+    // },[])
+
+    // if(typeof(cookieHook)==="string") {
+    //     localStorage.setItem("isAuth",true);
+    // }
+
 
     const loginData = {
         email,
@@ -52,8 +77,7 @@ const Login = () => {
         axios.post(`http://localhost:8080/api/login`, loginData, {withCredentials:true})
             .then((response) => {
                 const {data}=response;
-                localStorage.setItem('userId',data.passport.user);
-                localStorage.setItem('isAuth',true);
+                // localStorage.setItem('userId',data.passport.user);
                 history.push('/');
             })
             .catch((error) => {

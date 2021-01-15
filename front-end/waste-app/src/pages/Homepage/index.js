@@ -10,14 +10,15 @@ import Login from "../Login";
 import Register from "../Register";
 
 const Homepage = () => {
-    let cookie = document.cookie.split(";");
-    let localStorageIsAuth=localStorage.getItem('isAuth');
-    const [isAuth,setIsAuth]=useState(localStorageIsAuth);
-    console.log('Is auth:',isAuth);
-
-
-
-    console.log('Out is auth:',isAuth);
+    // let cookie = document.cookie.split(";");
+    // const [cookieHook,setCookieHook]=useState(cookie);
+    // console.log('Cookie out:',cookieHook);
+    // useEffect( () => {
+    //     setCookieHook(cookie);
+    //     console.log('Use effect Cookie:',cookieHook);
+    // },cookie)
+    // const isAuth=localStorage.getItem("isAuth");
+    // console.log('Is auth:',isAuth);
 
 
     return (
@@ -31,7 +32,7 @@ const Homepage = () => {
 
                 <Switch>
                     <Route exact path="/" component={Dashboard}>
-                        {isAuth ? <Redirect to={"/"} /> : <Redirect to={"/login"}/>}
+                        {/*{isAuth ? <Redirect to={"/"} /> : <Redirect to={"/login"}/>}*/}
                     </Route>
                     <Route path="/profile" component={Profile}/>
                     <Route path="/food" component={Food}/>
