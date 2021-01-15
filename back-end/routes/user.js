@@ -52,7 +52,11 @@ router.post('/createGroup',checkNotAuth, userController.createGroup);
 
 router.post('/addUsersToGroup', checkNotAuth, userController.addUsersToGroup);
 
+router.post('/sendInvite/:requesteeId', checkNotAuth, userController.sendFoodReview);
+
 router.put('/updateUser', checkNotAuth, userController.updateUser);
+
+router.put('/acceptInvite/:userId/:response', checkNotAuth, userController.acceptInvite);
 
 
 function checkAuth(req, res, next) {

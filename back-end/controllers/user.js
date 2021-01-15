@@ -2,6 +2,7 @@ const UserModel = require('../models').User;
 const ProductModel = require('../models').Product;
 const GroupModel = require('../models').Group;
 const FriendshipModel = require('../models').Friendship;
+const RequestModel = require('../models').Request;
 const validateRegister = require('./validations/validate-register');
 const bcrypt = require('bcrypt');
 
@@ -101,6 +102,46 @@ const controller = {
         }).catch(() => {
             res.status(500).send({message: "Server error"})
         })
+    },
+
+    sendFoodReview: async (req, res) => {
+        const currentUser = await req.user;
+        const invite = {
+            userId: currentUser.id,
+            requesterName: `${currentUser.firstName} ${currentUser.lastName}`,
+            accepted: "pending",
+            requesteeId: req.params.requesteeId
+        }
+        RequestModel.create(invite).then(() => {
+            res.status(201).send({message: "You sent the invite!"})
+        }).catch(() => {
+            res.status(502).send({message: "Something went wrong"})
+        })
+    },
+
+    acceptInvite: async (req, res) => {
+        const inviteFound = await RequestModel.findOne({
+            where: {
+               userId: req.params.userId 
+            }
+        })
+        const response = req.params.response;
+        if (inviteFound && response === "yes") {
+            inviteFound.update({
+                accepted: response
+            }).then(() => {
+                res.status(200).send({message: "You have accepted the invite"})
+            }).catch(()=> res.status(500).send({message:"Server error"}))
+        }
+        else if (inviteFound && response === "no") {
+            inviteFound.update({
+                accepted: "no"
+            }).then(() => res.status(200).send({ message: "You have declined the invitation" }))
+            .catch(()=> res.status(500).send({message: "Server error"}))
+        }
+        else {
+            res.status(400).send({message: "Invalid invite"})
+        }
     }
 }
 
