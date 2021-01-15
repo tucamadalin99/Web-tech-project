@@ -3,6 +3,7 @@ const ProductModel = require('../models').Product;
 const GroupModel = require('../models').Group;
 const FriendshipModel = require('../models').Friendship;
 const RequestModel = require('../models').Request;
+const FirendModel  = require('../models').Friend
 const validateRegister = require('./validations/validate-register');
 const bcrypt = require('bcrypt');
 
@@ -34,13 +35,30 @@ const controller = {
     getAllUsers: async (req, res) => {
         try {
             const users = await UserModel.findAll({
-                include: [ProductModel,GroupModel]
+                include: [ProductModel,GroupModel,RequestModel]
             });
             res.status(200).send(users);
         } catch {
             res.status(500).send({ message: "Server error!" })
         }
 
+    },
+
+    getUser: async (req, res) => {
+        try {
+            const user = await UserModel.findOne({
+                include: [ProductModel, GroupModel, RequestModel],
+                where: {
+                    id: req.params.id
+                }
+            });
+            if(user)
+                res.status(200).send(user);
+            else
+                res.status(400).send({message:"User not found"})
+        } catch {
+            res.status(500).send({message:"Server error"})
+        }
     },
 
 
@@ -96,7 +114,7 @@ const controller = {
             email: req.body.email,
             password: hashedPass,
             address: req.body.address,
-            type: req.body.type
+    
         }).then(() => {
             res.status(200).send({message: "User succesfully updated!"})
         }).catch(() => {
@@ -130,6 +148,7 @@ const controller = {
             inviteFound.update({
                 accepted: response
             }).then(() => {
+
                 res.status(200).send({message: "You have accepted the invite"})
             }).catch(()=> res.status(500).send({message:"Server error"}))
         }
@@ -142,7 +161,8 @@ const controller = {
         else {
             res.status(400).send({message: "Invalid invite"})
         }
-    }
+    },
+
 }
 
 module.exports = controller;

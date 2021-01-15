@@ -48,6 +48,8 @@ router.get('/logoutInfo', async (req, res) => {
 
 router.get('/getAllUsers', checkNotAuth, userController.getAllUsers);
 
+router.get('/getUser/:id', checkNotAuth, userController.getUser);
+
 router.post('/createGroup',checkNotAuth, userController.createGroup);
 
 router.post('/addUsersToGroup', checkNotAuth, userController.addUsersToGroup);
