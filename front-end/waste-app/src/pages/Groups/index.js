@@ -48,26 +48,37 @@ const Groups = () => {
     const [isModal2Opened, setIsModal2Opened] = useState(false);
     const [name, setName] = useState('');
     const [type, setType] = useState('');
-    const [users,setUsers] =useState('');
-    const[groupId,setGroupId]=useState('');
+    const [users, setUsers] = useState('');
+    const [groupId, setGroupId] = useState('');
+    const userId = localStorage.getItem('userId');
 
+    console.log('User id:', userId);
     toast.configure();
+
+      const groupTypeArray=['Normal','Vegetarian','Vegan','Carnivor'];
 
 
     const data = {
-        name,
-        type
+        groupName: name,
+        groupType: type
     }
-
     useEffect(() => {
-        axios.get('http://localhost:8080/api/getAllUsers',{withCredentials:true})
-            .then((response)=> {
-                const {data}=response;
-                console.log('Get all users:',data);
+        axios.get('http://localhost:8080/api/getAllUsers', {withCredentials: true})
+            .then((response) => {
+                const {data} = response;
+                console.log('Get all users:', data);
                 setFriendsData(data);
-            })
-    },[])
 
+            })
+    }, [])
+
+    const groups=Object.values(friendsData).map(el => {
+        if(el.id===parseInt(userId)) {
+            return el.groups;
+        }
+    });
+    const groups2=groups[0];
+    console.log('Groups:', groups2);
     const handleModalOpen = () => {
         setIsModalOpened(true);
     };
@@ -121,13 +132,13 @@ const Groups = () => {
     }
 
     const handleCheckedFriend = (data) => {
-        console.log('Users:',users);
-        setUsers([...users,data]);
-        console.log('Set users array:',users);
+        console.log('Users:', users);
+        setUsers([...users, data]);
+        console.log('Set users array:', users);
     }
 
 
-    const handleAddToGroup= () => {
+    const handleAddToGroup = () => {
         // axios.post('http://localhost:8080/api/addUsersToGroup',{users,})
     }
 
@@ -143,7 +154,7 @@ const Groups = () => {
                 >
                     Add group
                 </Button>
-                {users.length>=2 && (
+                {users.length >= 2 && (
                     <Button
                         variant="contained"
                         color="primary"
@@ -254,6 +265,23 @@ const Groups = () => {
                                             autoFocus
                                         />
                                     </Grid>
+                                    <Grid item xs={12}>
+                                        <FormControl variant="outlined" className={'add-food-category'}>
+                                            <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                name="groupId"
+                                                value={type}
+                                                onChange={handleChange}
+                                            >
+                                                <MenuItem value={1}>Normal</MenuItem>
+                                                <MenuItem value={2}>Vegetarian</MenuItem>
+                                                <MenuItem value={3}>Vegan</MenuItem>
+                                                <MenuItem value={4}>Carnivor</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
                                     <Grid item xs={12} direction={"row"} justify={"center"} alignItems={"center"}>
                                         <Button
 
@@ -283,23 +311,26 @@ const Groups = () => {
                         Add Friends
                     </Typography>
                     <Grid container spacing={2} className={'grid-container'}>
-                        {Object.values(friendsData).map(el =>{
-                            const name=el.firstName+" "+el.lastName;
+                        {Object.values(friendsData).map(el => {
+                            const name = el.firstName + " " + el.lastName;
                             // const initial=el.firstName.substring(0,1);
-                            return(
+                            return (
                                 <Grid key={el.id} item xs={1}>
                                     <Friend name={name}
-                                            // initial={initial}
+                                        // initial={initial}
                                             checkbox={true}
-                                            sendData={handleCheckedFriend} id={el.id} />
+                                            sendData={handleCheckedFriend} id={el.id}/>
                                 </Grid>
                             )
                         })}
 
                     </Grid>
+                    {groups2?.map(group => {
+                        return <p key={group.id}>{group.groupName} {groupTypeArray[group.groupType]}</p>
+                    })}
                 </div>
             ) : (
-                <CircularProgress />
+                <CircularProgress/>
             )}
 
         </>

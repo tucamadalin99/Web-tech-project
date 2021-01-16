@@ -20,19 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01efc992-8eee-4669-81de-67f377394308" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/Friend/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/Friend/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Friends/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Friends/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/components/Navigation/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/Navigation/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Homepage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Homepage/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Profile/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +114,7 @@
       <workItem from="1609774912796" duration="166000" />
       <workItem from="1610659419129" duration="11220000" />
       <workItem from="1610705582364" duration="38000" />
-      <workItem from="1610741982687" duration="16258000" />
+      <workItem from="1610741982687" duration="18315000" />
     </task>
     <task id="LOCAL-00001" summary="Front end setup + Login + Register">
       <created>1607033418321</created>
@@ -182,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610668063487</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added groups + edited profile + add friends">
+      <created>1610759743947</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1610759743948</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,7 +205,8 @@
     <MESSAGE value="80% of the front-end done" />
     <MESSAGE value="Fixed bug" />
     <MESSAGE value="Added protected routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added protected routes" />
+    <MESSAGE value="Added groups + edited profile + add friends" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added groups + edited profile + add friends" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2506" y="218" key="#Inspections" timestamp="1608745962987">
@@ -298,6 +296,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2703" y="274" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607033452106" />
+    <state x="2689" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610761697598">
+      <screen x="1920" y="3" width="1920" height="1080" />
+    </state>
+    <state x="2689" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610761697598" />
     <state x="117" y="113" width="1459" height="767" key="dock-window-1" timestamp="1610745381917">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
