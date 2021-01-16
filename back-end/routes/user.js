@@ -54,7 +54,7 @@ router.post('/createGroup',checkNotAuth, userController.createGroup);
 
 router.post('/addUsersToGroup', checkNotAuth, userController.addUsersToGroup);
 
-router.post('/sendInvite/:firendId', checkNotAuth, userController.sendInvite);
+router.post('/sendInvite/:friendId', checkNotAuth, userController.sendInvite);
 
 router.put('/updateUser', checkNotAuth, userController.updateUser);
 

@@ -129,21 +129,27 @@ const controller = {
             name: req.body.name,
             type: req.body.type,
         }
-        FriendModel.create(friend).then(async currentUser => {
+        FriendModel.create(friend).then(async () => {
             const friendship = {
                 userId: currentUser.id,
-                friendId: req.params.id
+                friendId: req.params.friendId
             }
             try {
-                FriendshipModel.create(friendship);
-                res.status(201).send({message:"Tai coiu merge"})
+               await FriendshipModel.create(friendship);
+                res.status(201).send({message:"Friend request sent!"})
             } catch (err) {
-                res.statis(500).send({message:"A crapat manca mi ar pula"})
+                res.status(500).send({message:"Server error"})
             }
         }).catch(() => {
             res.status(500).send({message:"Erroare la server"})
         })
+
     },
+
+    // acceptInvite: async (req, res) => {
+    //     const currUser = await req.user;
+    //     FriendshipModel.create({userId: })
+    // }
 
     //  createGroup: async (req, res) => {
     //     const currentUser = await req.user;

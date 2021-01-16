@@ -30,12 +30,12 @@ Group.belongsToMany(User, {
 
 User.belongsToMany(Friend, {
     through: 'friendship',
-   
+    foreignKey: 'userId'
 })
 
 Friend.belongsToMany(User, {
     through: 'friendship',
-    
+    foreignKey: 'friendId'
 })
 
 
