@@ -8,10 +8,11 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import DeleteIcon from '@material-ui/icons/Delete';
 import DoneIcon from '@material-ui/icons/Done';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import {FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton} from 'react-share';
 import axios from 'axios';
 import {toast, ToastContainer} from 'react-toastify';
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 const FoodItem = (props) => {
     const classes = useStyles();
-    const {name, expireDate, brand, price, count, id, objectUserId} = props;
+    const {name, expireDate, brand, price, count, id, objectUserId, unclaim, status} = props;
     const [isOpened, setIsOpened] = useState(false);
     const userId=localStorage.getItem('userId');
 
@@ -80,6 +81,64 @@ const FoodItem = (props) => {
             })
     };
 
+    const handleUnclaim = () => {
+        console.log('Unhandle Claim datA:',userId,id);
+        axios.put(`http://localhost:8080/api/unclaimProduct/${objectUserId}/${id}`,{userId:objectUserId,id:id},{withCredentials:true})
+            .then(() =>{
+                toast.success(`Product ${name} unclaimed succesfully`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+            })
+            .catch((error) => {
+                console.log('User id:',userId,'id:',id);
+                console.log('Error:',error.response.data.message);
+                toast.error(error.response.data.message, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+            })
+    }
+
+    const handleDelete = () => {
+        axios.delete(`http://localhost:8080/api/deleteProduct/${id}`,{withCredentials:true})
+            .then(() =>{
+                toast.success(`Product ${name} deleted succesfully`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+                console.log('Product claimed successfully')
+            })
+            .catch((error) => {
+                console.log('User id:',userId,'id:',id);
+                console.log('Error:',error.response.data.message);
+                toast.error(error.response.data.message, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+            })
+    }
+
     return (
         <Card className={classes.root}>
             <CardHeader
@@ -106,6 +165,11 @@ const FoodItem = (props) => {
                 <Typography variant="body2" color="textSecondary" component="p">
                     Count: {count}
                 </Typography>
+                {(status !=='available' && status) ?(
+                    <Typography variant="body2" color="textSecondary" component="p">
+                       Claimed by {status}
+                    </Typography>
+                ): null}
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
@@ -114,6 +178,8 @@ const FoodItem = (props) => {
                 <IconButton aria-label="share">
                     <ShareIcon onClick={() => setIsOpened(!isOpened)}/>
                 </IconButton>
+
+
                 {isOpened && (
                     <>
                         <IconButton>
@@ -137,6 +203,12 @@ const FoodItem = (props) => {
 
                     </>
                 )}
+
+                {unclaim===1 ? (<IconButton aria-label={"unclaim product"}>
+                    <RemoveCircleIcon onClick={handleUnclaim} />
+                </IconButton>) : unclaim===2 ? (<IconButton aria-label={"unclaim product"}>
+                    <DeleteIcon onClick={handleDelete} />
+                </IconButton>) : <></> }
 
             </CardActions>
 

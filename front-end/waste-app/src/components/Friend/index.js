@@ -32,15 +32,13 @@ const Friend = (props) => {
     const classes = useStyles();
     const [checked,setChecked]=useState(false);
 
-    useEffect(() => {
-        console.log('ID :',id)
-        sendData(id);
-    },[checked])
+    // useEffect(() => {
+    //     console.log('ID :',id)
+    //     sendData(id);
+    // })
 
     const handleCheckbox = () => {
-        console.log('Checked before:',checked);
-        setChecked(true)
-        console.log('Checked after:',checked);
+        sendData(id);
     }
 
     return (
@@ -61,8 +59,7 @@ const Friend = (props) => {
                                 edge="start"
                                 // checked={checked.indexOf(value) !== -1}
                                 tabIndex={-1}
-                                onChange={() =>{
-                                    setChecked(true)}}
+                                onChange={handleCheckbox}
                                 disableRipple
                             />
 
