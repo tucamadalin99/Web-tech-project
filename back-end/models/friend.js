@@ -2,8 +2,8 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
         "friend",
         {
-            status: DataTypes.STRING,
-            name: DataTypes.STRING,
+            to: DataTypes.STRING,
+            from: DataTypes.STRING,
             type: DataTypes.STRING
         }
     )

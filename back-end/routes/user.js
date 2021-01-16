@@ -50,15 +50,17 @@ router.get('/getAllUsers', checkNotAuth, userController.getAllUsers);
 
 router.get('/getUser/:id', checkNotAuth, userController.getUser);
 
+//router.get('/getRequests', checkNotAuth, userController.handleInvite);
+
 router.post('/createGroup',checkNotAuth, userController.createGroup);
 
 router.post('/addUsersToGroup', checkNotAuth, userController.addUsersToGroup);
 
-router.post('/sendInvite/:firendId', checkNotAuth, userController.sendInvite);
+router.post('/sendInvite/:friendId', checkNotAuth, userController.sendInvite);
 
 router.put('/updateUser', checkNotAuth, userController.updateUser);
 
-router.put('/handleInvite/:userId/:response', checkNotAuth, userController.handleInvite);
+// router.put('/handleInvite/:userId/:response', checkNotAuth, userController.handleInvite);
 
 
 function checkAuth(req, res, next) {
