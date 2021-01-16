@@ -125,18 +125,31 @@ const controller = {
     sendInvite: async (req, res) => {
         const currentUser = await req.user;
         const friend = {
-            status:'pending',
-            name: req.body.name,
+            status:'sent',
+            to: req.body.to,
+            from: currentUser.firstName + " " + currentUser.lastName,
             type: req.body.type,
         }
+        const friend2 = {
+            status: 'send',
+            to: currentUser.firstName + " " + currentUser.lastName,
+            from: req.body.to,
+            type: req.body.type
+        }
         FriendModel.create(friend).then(async () => {
+            await FriendModel.create(friend2);
             const friendship = {
                 userId: currentUser.id,
                 friendId: req.params.friendId
             }
+            const request = {
+                userId: req.params.friendId,
+                friendId: currentUser.id
+            }
             try {
-               await FriendshipModel.create(friendship);
-                res.status(201).send({message:"Friend request sent!"})
+                await FriendshipModel.create(friendship);
+                 FriendshipModel.create(request)
+                res.status(201).send({ message: "Friend request sent!" })
             } catch (err) {
                 res.status(500).send({message:"Server error"})
             }
@@ -146,40 +159,13 @@ const controller = {
 
     },
 
-    // acceptInvite: async (req, res) => {
-    //     const currUser = await req.user;
-    //     FriendshipModel.create({userId: })
-    // }
 
-    //  createGroup: async (req, res) => {
+    // handleInvite: async (req, res) => {
     //     const currentUser = await req.user;
-    //     const newGroup = {
-    //         groupName: req.body.groupName,
-    //         groupType: req.body.groupType
-    //     }
-    //     GroupModel.create(newGroup).then(async resp => {
-    //         const groupship = {
-    //             userId: currentUser.id,
-    //             groupId: resp.id
-    //         }
-    //         try {
-    //             GroupshipModel.create(groupship);
-    //             res.status(201).send({message:"Group added!"})
-    //         } catch (err) {
-    //             res.status(500).send({message:"Server error!"})
-    //         }    
-    //     }).catch(() => { res.status(500).send({ message: "Error" }) })
+    //     UserModel.findAll({where: u}).then(request => {
+    //         res.status(200).send(currentUser);
+    //     }).catch(()=> res.status(500).send({message:"Server error"}))
     // },
-
-
-    handleInvite: async (req, res) => {
-        const request = await FriendModel.findOne({
-            where: {
-
-            }
-        })
-        
-    },
 
 }
 
