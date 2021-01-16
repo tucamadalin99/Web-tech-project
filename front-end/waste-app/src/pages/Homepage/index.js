@@ -8,6 +8,7 @@ import Achievements from "../Achievements";
 import Profile from "../Profile";
 import Login from "../Login";
 import Register from "../Register";
+import Friends from "../Friends";
 
 const Homepage = () => {
     // let cookie = document.cookie.split(";");
@@ -38,6 +39,7 @@ const Homepage = () => {
                     <Route path="/food" component={Food}/>
                     <Route path="/groups" component={Groups}/>
                     <Route path="/achievements" component={Achievements}/>
+                    <Route path="/friends" component={Friends}/>
 
                 </Switch>
             </>

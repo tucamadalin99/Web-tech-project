@@ -15,6 +15,11 @@ const Dashboard = () => {
     const [productData, setProductData] = useState([]);
     const [category,setCategory]=useState(1);
     const[filter,setFilter]=useState("");
+
+    const userId = localStorage.getItem('userId');
+    console.log('User ID:',userId);
+
+
     useEffect(() => {
         axios.get(`http://localhost:8080/api/getAllProducts`, {withCredentials: true})
             .then((response) => {
@@ -75,7 +80,7 @@ const Dashboard = () => {
                 <Grid container spacing={2} className={'food-item-container'}>
 
                     {Object.values(productData).map(product => {
-                        if(product.categoryId===category && product.status==='available' && product.name.toLowerCase().includes(filter))
+                        if(product.categoryId===category && product.status==='available' && product.userId!==parseInt(userId) && product.name.toLowerCase().includes(filter))
                         return (
                             <Grid key={product.id} item xs={4} className={'food-item'}>
                                 <FoodItem id={product.id} name={product.name} expireDate={product.expireDate} brand={product.brand}

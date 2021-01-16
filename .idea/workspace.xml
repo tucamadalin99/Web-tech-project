@@ -20,15 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01efc992-8eee-4669-81de-67f377394308" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/utils/Store/Reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/utils/Store/Reducers/reducer-auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/Friend/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/Friend/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Friends/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Friends/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/components/Navigation/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/Navigation/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Homepage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Homepage/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Login/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Profile/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +124,7 @@
       <workItem from="1609774912796" duration="166000" />
       <workItem from="1610659419129" duration="11220000" />
       <workItem from="1610705582364" duration="38000" />
-      <workItem from="1610741982687" duration="3562000" />
+      <workItem from="1610741982687" duration="16258000" />
     </task>
     <task id="LOCAL-00001" summary="Front end setup + Login + Register">
       <created>1607033418321</created>
@@ -299,24 +303,25 @@
     </state>
     <state x="66" y="112" width="1484" height="813" maximized="true" key="dock-window-1/0.0.1536.864/1920.0.1920.1080@1920.0.1920.1080" timestamp="1608747150138" />
     <state x="117" y="113" width="1459" height="767" key="dock-window-1/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610745381917" />
-    <state x="2587" y="247" width="585" height="592" key="find.popup" timestamp="1610744892403">
+    <state x="2587" y="247" width="585" height="592" key="find.popup" timestamp="1610753029877">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
     <state x="667" y="244" width="585" height="592" key="find.popup/-1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1610670618199" />
     <state x="2587" y="244" width="585" height="592" key="find.popup/0.0.1536.864/1920.0.1920.1080@1920.0.1920.1080" timestamp="1608754288945" />
-    <state x="2587" y="247" width="585" height="592" key="find.popup/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610744892403" />
+    <state x="2587" y="247" width="585" height="592" key="find.popup/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610753029877" />
     <state x="2587" y="244" width="585" height="592" key="find.popup/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607028824258" />
     <state x="2536" y="252" key="run.anything.popup" timestamp="1607896720719">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
     <state x="2536" y="252" key="run.anything.popup/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607896720719" />
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1610705615709">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="2543" y="238" width="672" height="678" key="search.everywhere.popup" timestamp="1610755034402">
+      <screen x="1920" y="3" width="1920" height="1080" />
     </state>
     <state x="2543" y="238" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607891508112" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1607724326166" />
     <state x="2543" y="238" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1607071392135" />
     <state x="2543" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1536.864/1920.0.1920.1080@1920.0.1920.1080" timestamp="1609066384971" />
+    <state x="2543" y="238" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610755034402" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1610705615709" />
     <state x="2543" y="236" width="672" height="678" key="search.everywhere.popup/3840.-8.1536.864/-1920.3.1920.1080/1920.1.1920.1080/0.0.1920.1080@1920.1.1920.1080" timestamp="1607330161051" />
   </component>

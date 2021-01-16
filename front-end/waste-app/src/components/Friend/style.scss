@@ -1,0 +1,23 @@
+.friend-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  >.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    >.friend-name {
+      margin-top:10px ;
+    }
+  }
+
+  >.card-actions {
+    display: flex;
+  }
+
+
+}

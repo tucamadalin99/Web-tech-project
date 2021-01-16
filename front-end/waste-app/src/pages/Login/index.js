@@ -77,7 +77,7 @@ const Login = () => {
         axios.post(`http://localhost:8080/api/login`, loginData, {withCredentials:true})
             .then((response) => {
                 const {data}=response;
-                // localStorage.setItem('userId',data.passport.user);
+                localStorage.setItem('userId',data.passport.user);
                 history.push('/');
             })
             .catch((error) => {

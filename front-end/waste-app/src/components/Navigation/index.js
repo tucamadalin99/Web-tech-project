@@ -80,6 +80,10 @@ const Navigation = ({children}) => {
             text: 'Achievements',
             link: '/achievements',
         },
+        {
+            text: 'Friends',
+            link: '/friends',
+        },
     ];
 
     const drawerGeneralOptions = [
@@ -94,6 +98,10 @@ const Navigation = ({children}) => {
         {
             text: 'Dashboard',
             link: '/dashboard',
+        },
+        {
+            text: 'Friends',
+            link: '/friends',
         },
     ];
 
@@ -129,13 +137,13 @@ const Navigation = ({children}) => {
                             >
                                 <ListItemIcon>
                                     {/* eslint-disable-next-line no-nested-ternary */}
-                                    {index % 3 === 0 ? (
+                                    {index % 4 === 0 ? (
                                         <KitchenIcon/>
-                                    ) : index % 3 === 1 ? (
+                                    ) : index % 4 === 1 ? (
                                         <GroupIcon/>
-                                    ) : (
+                                    ) : index%4===2 ? (
                                         <EmojiEventsIcon/>
-                                    )}
+                                    ) : (<GroupIcon/>) }
                                 </ListItemIcon>
                                 <ListItemText primary={value.text}/>
                             </ListItem>

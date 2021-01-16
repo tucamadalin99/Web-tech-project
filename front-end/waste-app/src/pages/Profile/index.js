@@ -82,6 +82,7 @@ const Profile = () => {
 
     const handleEditProfile = () => {
         setEditedData({...editedData,password:editedPassword});
+        setProfileData({...editedData,type:type});
         console.log('Sent data:',editedData);
         axios.put('http://localhost:8080/api/updateUser',editedData,{withCredentials:true})
             .then(() => {
@@ -117,11 +118,11 @@ const Profile = () => {
         <>
             {profileData ? (
                 <>
-                    <div className="dashboard-category-picker">
+                    <div className="groups-add-group-container">
                         <Button
                             variant="contained"
                             color="primary"
-                            className={'my-food-add-button'}
+                            className={'add-group-button'}
                             startIcon={<EditIcon/>}
                             onClick={handleModalOpen}
                         >
