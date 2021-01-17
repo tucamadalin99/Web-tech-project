@@ -10,9 +10,9 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import IconButton from '@material-ui/core/IconButton';
 import './style.scss';
 import Checkbox from "@material-ui/core/Checkbox";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import axios from 'axios';
+import {toast, ToastContainer} from 'react-toastify';
+
 
 
 
@@ -28,19 +28,44 @@ const useStyles = makeStyles({
     },
 });
 const Friend = (props) => {
-    const {id,name,initial, onClick, checkbox,sendData}=props;
+    toast.configure();
+    const {id,name,initial, checkbox,sendData}=props;
     const classes = useStyles();
     const [checked,setChecked]=useState(false);
 
-    useEffect(() => {
-        console.log('ID :',id)
-        sendData(id);
-    },[checked])
+    // useEffect(() => {
+    //     console.log('ID :',id)
+    //     sendData(id);
+    // })
 
     const handleCheckbox = () => {
-        console.log('Checked before:',checked);
-        setChecked(true)
-        console.log('Checked after:',checked);
+        sendData(id);
+    }
+
+    const handleAddFriend = () => {
+        axios.post(`http://localhost:8080/api/sendInvite/${id}`,{friendId:id},{withCredentials:true})
+            .then(() => {
+                toast.success(`User ${name} added to friend list successfully`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+            })
+            .catch((error) => {
+                toast.error(error.response.data.message, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+            })
     }
 
     return (
@@ -61,13 +86,12 @@ const Friend = (props) => {
                                 edge="start"
                                 // checked={checked.indexOf(value) !== -1}
                                 tabIndex={-1}
-                                onChange={() =>{
-                                    setChecked(true)}}
+                                onChange={handleCheckbox}
                                 disableRipple
                             />
 
                 ) : (
-                    <IconButton color={"primary"} component={"span"} onClick={onClick} >
+                    <IconButton color={"primary"} component={"span"} onClick={handleAddFriend} >
                         <AddCircleIcon/>
                     </IconButton>
                 )}

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import Button from "@material-ui/core/Button";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import Modal from "@material-ui/core/Modal";
@@ -17,6 +17,11 @@ import './style.scss';
 import Typography from "@material-ui/core/Typography";
 import Friend from "../../components/Friend";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import List from "@material-ui/core/List";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItem from "@material-ui/core/ListItem";
+import Checkbox from "@material-ui/core/Checkbox";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,13 +55,15 @@ const Groups = () => {
     const [type, setType] = useState('');
     const [users, setUsers] = useState('');
     const [groupId, setGroupId] = useState('');
+    const [checked,setChecked]=useState([0]);
+    const id=useRef([]);
     const userId = localStorage.getItem('userId');
+    let groups=[];
 
     console.log('User id:', userId);
     toast.configure();
 
       const groupTypeArray=['Normal','Vegetarian','Vegan','Carnivor'];
-
 
     const data = {
         groupName: name,
@@ -72,12 +79,20 @@ const Groups = () => {
             })
     }, [])
 
-    const groups=Object.values(friendsData).map(el => {
+    groups=Object.values(friendsData).map(el => {
         if(el.id===parseInt(userId)) {
             return el.groups;
         }
     });
-    const groups2=groups[0];
+    console.log('Groups:',groups);
+    let groupsTest=groups.map(group => {
+        if(group!==undefined) {
+            return group;
+        }
+    })
+    console.log('Groups test:',groupsTest);
+
+    let groups2=groups[parseInt(userId)-1];
     console.log('Groups:', groups2);
     const handleModalOpen = () => {
         setIsModalOpened(true);
@@ -103,7 +118,21 @@ const Groups = () => {
 
     }
 
-    const handleGroup = () => {
+    const handleToggle = (value) => () => {
+        const currentIndex = checked.indexOf(value);
+        const newChecked = [...checked];
+        if (currentIndex === -1) {
+            newChecked.push(value);
+        } else {
+            newChecked.splice(currentIndex, 1);
+        }
+
+        setChecked(newChecked);
+        console.log('Checked:',checked);
+    };
+
+
+    const handleAddGroup = () => {
         console.log('Data sent:', data);
         axios.post('http://localhost:8080/api/createGroup', data, {withCredentials: true})
             .then(() => {
@@ -130,16 +159,55 @@ const Groups = () => {
             })
 
     }
+    
+
 
     const handleCheckedFriend = (data) => {
-        console.log('Users:', users);
-        setUsers([...users, data]);
-        console.log('Set users array:', users);
+        if(!id.current.includes(data)) {
+            id.current=[...id.current,data];
+        }
+        else {
+            for(let i=0;i<id.current.length;i++) {
+                if(id.current[i]===data) {
+                    console.log('i:',i);
+                    id.current.splice(i,1);
+
+
+                }
+            }
+        }
+        setUsers(id.current);
+        console.log('Users:',users);
+        console.log('Set users array:', id.current);
     }
 
 
     const handleAddToGroup = () => {
-        // axios.post('http://localhost:8080/api/addUsersToGroup',{users,})
+        const groupId=checked[1];
+        console.log('Users:',id.current,'Group id:',groupId);
+        axios.post('http://localhost:8080/api/addUsersToGroup',{users,groupId}, {withCredentials:true})
+             .then(() => {
+                 toast.success(`Users added to group successfully`, {
+                     position: "top-right",
+                     autoClose: 2000,
+                     hideProgressBar: false,
+                     closeOnClick: true,
+                     pauseOnHover: false,
+                     draggable: false,
+                     progress: undefined,
+                 });
+             })
+             .catch((error) => {
+                 toast.error(error.response.data.message, {
+                     position: "top-right",
+                     autoClose: 2000,
+                     hideProgressBar: false,
+                     closeOnClick: true,
+                     pauseOnHover: false,
+                     draggable: false,
+                     progress: undefined,
+                 });
+             })
     }
 
     return (
@@ -154,13 +222,13 @@ const Groups = () => {
                 >
                     Add group
                 </Button>
-                {users.length >= 2 && (
+                {users.length>0 && (
                     <Button
                         variant="contained"
                         color="primary"
                         className={'add-group-button'}
                         startIcon={<AddCircleOutlineIcon/>}
-                        onClick={handleModalOpen}
+                        onClick={handleAddToGroup}
                     >
                         Add to group
                     </Button>
@@ -220,7 +288,7 @@ const Groups = () => {
                                             variant="contained"
                                             color="primary"
                                             className={classes.submit}
-                                            onClick={handleGroup}
+                                            onClick={handleAddGroup}
                                         >
                                             Add product
                                         </Button>
@@ -233,75 +301,7 @@ const Groups = () => {
                         </div>
                     </Fade>
                 </Modal>
-
-                <Modal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    className={classes.modal}
-                    open={isModal2Opened}
-                    onClose={handleModal2Close}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                        timeout: 500,
-                    }}
-                >
-                    <Fade in={isModalOpened}>
-                        <div className={classes.paper}>
-                            <div className="modal-header">Add Group</div>
-                            <form className={classes.form} noValidate>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            variant="outlined"
-                                            margin="normal"
-                                            required
-                                            fullWidth
-                                            id="groupId"
-                                            label="Group id"
-                                            name="groupId"
-                                            value={groupId}
-                                            onChange={(e) => setGroupId(e.target.value)}
-                                            autoFocus
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <FormControl variant="outlined" className={'add-food-category'}>
-                                            <InputLabel id="demo-simple-select-label">Category</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-label"
-                                                id="demo-simple-select"
-                                                name="groupId"
-                                                value={type}
-                                                onChange={handleChange}
-                                            >
-                                                <MenuItem value={1}>Normal</MenuItem>
-                                                <MenuItem value={2}>Vegetarian</MenuItem>
-                                                <MenuItem value={3}>Vegan</MenuItem>
-                                                <MenuItem value={4}>Carnivor</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
-                                    <Grid item xs={12} direction={"row"} justify={"center"} alignItems={"center"}>
-                                        <Button
-
-                                            fullWidth
-                                            variant="contained"
-                                            color="primary"
-                                            className={classes.submit}
-                                            onClick={handleAddToGroup}
-                                        >
-                                            Add to group
-                                        </Button>
-                                    </Grid>
-
-
-                                </Grid>
-
-                            </form>
-                        </div>
-                    </Fade>
-                </Modal>
+                
 
 
             </div>
@@ -325,9 +325,33 @@ const Groups = () => {
                         })}
 
                     </Grid>
+                    <Typography variant="h5" component="h5" className={'friend-name'}>
+                        Your groups
+                    </Typography>
+                    <List dense className={classes.root}>
                     {groups2?.map(group => {
-                        return <p key={group.id}>{group.groupName} {groupTypeArray[group.groupType]}</p>
+                        const labelId=`group-${group.id}`;
+                        const name=group.groupName;
+                        // return <p key={group.id}>{group.groupName} {groupTypeArray[group.groupType]}</p>
+                        if(name) {
+                            return (
+                                <ListItem key={group.id} button>
+                                    <ListItemText id={labelId} primary={group.groupName} />
+                                    <ListItemSecondaryAction>
+                                        <Checkbox
+                                            edge="end"
+                                            onChange={handleToggle(group.id)}
+                                             checked={checked.indexOf(group.id) !== -1}
+                                            inputProps={{ 'aria-labelledby': labelId }}
+                                        />
+                                    </ListItemSecondaryAction>
+                                </ListItem>
+
+                            )
+                        }
+
                     })}
+                    </List>
                 </div>
             ) : (
                 <CircularProgress/>

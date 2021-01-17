@@ -15,6 +15,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import {toast} from 'react-toastify';
 import './style.scss';
 import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -41,9 +42,10 @@ const Food = () => {
     toast.configure();
     const classes = useStyles();
     const [productData, setProductData] = useState({});
-    const [category, setCategory] = useState(1);
+    const [category, setCategory] = useState(0);
     const userId = localStorage.getItem('userId');
     const [isModalOpened, setIsModalOpened] = useState(false);
+    const [userData,setUserData]=useState({});
     const [foodData, setFoodData] = useState({
         name: '',
         expireDate: '',
@@ -62,6 +64,16 @@ const Food = () => {
                 const {data} = response;
                 const {results} = data;
                 setProductData(data);
+                console.log('Product data:',productData);
+            })
+        axios.get(`http://localhost:8080/api/getUser`, {withCredentials: true})
+            .then((response) => {
+                const {data} = response;
+                setUserData(data);
+                console.log('User data:',userData);
+            })
+            .catch((error) => {
+                console.log('Error:', error);
             })
     }, [])
 
@@ -146,6 +158,7 @@ const Food = () => {
                                 value={category}
                                 onChange={handleChange}
                             >
+                                <MenuItem value={0}>All items</MenuItem>
                                 <MenuItem value={1}>Normal</MenuItem>
                                 <MenuItem value={2}>Vegetarian</MenuItem>
                                 <MenuItem value={3}>Vegan</MenuItem>
@@ -153,6 +166,7 @@ const Food = () => {
                             </Select>
                         </FormControl>
                     </div>
+
                     <Modal
                         aria-labelledby="transition-modal-title"
                         aria-describedby="transition-modal-description"
@@ -277,16 +291,25 @@ const Food = () => {
                             </div>
                         </Fade>
                     </Modal>
+                    <Typography align={"center"} variant="h5" component="h5" className={'friend-name'}>
+                        My food
+                    </Typography>
 
                     <Grid container spacing={2} className={'food-item-container'}>
 
                         {Object.values(productData).map(product => {
-                            if (product.userId === parseInt(userId) && product.categoryId === category)
+                            if (product.userId === parseInt(userId) && (product.categoryId === category || category===0))
                                 return (
                                     <Grid key={product.id} item xs={4} className={'food-item'}>
-                                        <FoodItem id={product.id} name={product.name} expireDate={product.expireDate}
+                                        <FoodItem unclaim={2}
+                                                  id={product.id}
+                                                  name={product.name}
+                                                  expireDate={product.expireDate}
                                                   brand={product.brand}
-                                                  price={product.price} count={product.count}/>
+                                                  price={product.price}
+                                                  count={product.count}
+                                                  status={product.status}
+                                        />
                                     </Grid>
                                 )
 
@@ -295,6 +318,32 @@ const Food = () => {
 
 
                     </Grid>
+                    <Typography align={"center"} variant="h5" component="h5" className={'friend-name'}>
+                        Claimed food
+                    </Typography>
+                    <Grid container spacing={2} className={'food-item-container'}>
+
+                        {Object.values(productData).map(product => {
+                            const name=userData.firstName+" "+userData.lastName;
+                            if (product.status===name)
+                                return (
+                                    <Grid key={product.id} item xs={4} className={'food-item'}>
+                                        <FoodItem unclaim={1} id={product.id} name={product.name}
+                                                  expireDate={product.expireDate}
+                                                  brand={product.brand}
+                                                  price={product.price}
+                                                  count={product.count}
+                                                  objectUserId={product.userId}
+                                        />
+                                    </Grid>
+                                )
+
+
+                        })}
+
+
+                    </Grid>
+
                 </>
             ) : <CircularProgress/>}
         </>

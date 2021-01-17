@@ -10,10 +10,11 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import Typography from "@material-ui/core/Typography";
 
 const Dashboard = () => {
     const [productData, setProductData] = useState([]);
-    const [category,setCategory]=useState(1);
+    const [category,setCategory]=useState(0);
     const[filter,setFilter]=useState("");
 
     const userId = localStorage.getItem('userId');
@@ -61,6 +62,7 @@ const Dashboard = () => {
                             onChange={handleSearchChange}
 
                         />
+
                         <FormControl >
                             <InputLabel id="demo-simple-select-label">Category</InputLabel>
                             <Select
@@ -69,6 +71,7 @@ const Dashboard = () => {
                                 value={category}
                                 onChange={handleChange}
                             >
+                                <MenuItem value={0}>All items</MenuItem>
                                 <MenuItem value={1}>Normal</MenuItem>
                                 <MenuItem value={2}>Vegetarian</MenuItem>
                                 <MenuItem value={3}>Vegan</MenuItem>
@@ -76,14 +79,16 @@ const Dashboard = () => {
                             </Select>
                         </FormControl>
                     </div>
-
+                    <Typography align={"center"} variant="h5" component="h5" className={'friend-name'}>
+                        Available food
+                    </Typography>
                 <Grid container spacing={2} className={'food-item-container'}>
 
                     {Object.values(productData).map(product => {
-                        if(product.categoryId===category && product.status==='available' && product.userId!==parseInt(userId) && product.name.toLowerCase().includes(filter))
+                        if((product.categoryId===category || category===0) && product.status==='available' && product.userId!==parseInt(userId) && product.name.toLowerCase().includes(filter))
                         return (
                             <Grid key={product.id} item xs={4} className={'food-item'}>
-                                <FoodItem id={product.id} name={product.name} expireDate={product.expireDate} brand={product.brand}
+                                <FoodItem unclaim={0} id={product.id} name={product.name} expireDate={product.expireDate} brand={product.brand}
                                           price={product.price} count={product.count} objectUserId={product.userId} />
                             </Grid>
                         )
