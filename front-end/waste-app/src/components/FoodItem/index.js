@@ -144,7 +144,8 @@ const FoodItem = (props) => {
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                        {name.charAt(0)}
+                        {/*{name.charAt(0)}*/}
+                        {name}
                     </Avatar>
                 }
                 action={

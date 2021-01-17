@@ -24,10 +24,8 @@
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/components/FoodItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/FoodItem/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/components/Friend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/Friend/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Food/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Food/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Food/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Food/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Groups/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Friends/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Friends/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Friends/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Friends/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +118,7 @@
       <workItem from="1610659419129" duration="11220000" />
       <workItem from="1610705582364" duration="38000" />
       <workItem from="1610741982687" duration="18431000" />
-      <workItem from="1610828667041" duration="10514000" />
+      <workItem from="1610828667041" duration="18840000" />
     </task>
     <task id="LOCAL-00001" summary="Front end setup + Login + Register">
       <created>1607033418321</created>
@@ -320,11 +318,15 @@
     <state x="2085" y="103" width="1459" height="799" key="dock-window-1/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1610838900665" />
     <state x="66" y="112" width="1484" height="813" maximized="true" key="dock-window-1/0.0.1536.864/1920.0.1920.1080@1920.0.1920.1080" timestamp="1608747150138" />
     <state x="117" y="113" width="1459" height="767" key="dock-window-1/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610745381917" />
-    <state x="2587" y="247" width="585" height="592" key="find.popup" timestamp="1610839586364">
+    <state x="178" y="110" width="1459" height="799" key="dock-window-2" timestamp="1610842027161">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="178" y="110" width="1459" height="799" key="dock-window-2/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1610842027161" />
+    <state x="2587" y="247" width="585" height="592" key="find.popup" timestamp="1610841999421">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
     <state x="667" y="244" width="585" height="592" key="find.popup/-1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1610670618199" />
-    <state x="2587" y="247" width="585" height="592" key="find.popup/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1610839586364" />
+    <state x="2587" y="247" width="585" height="592" key="find.popup/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1610841999421" />
     <state x="2587" y="244" width="585" height="592" key="find.popup/0.0.1536.864/1920.0.1920.1080@1920.0.1920.1080" timestamp="1608754288945" />
     <state x="2587" y="247" width="585" height="592" key="find.popup/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610753029877" />
     <state x="2587" y="244" width="585" height="592" key="find.popup/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607028824258" />
