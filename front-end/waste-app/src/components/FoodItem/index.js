@@ -15,9 +15,12 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import {FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton} from 'react-share';
 import axios from 'axios';
+import ErrorIcon from '@material-ui/icons/Error';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.scss';
+import Tooltip from "@material-ui/core/Tooltip";
+import { green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 const FoodItem = (props) => {
     const classes = useStyles();
-    const {name, expireDate, brand, price, count, id, objectUserId, unclaim, status} = props;
+    const {name, expireDate, brand, price, count, id, objectUserId, unclaim, status, expireSoon} = props;
     const [isOpened, setIsOpened] = useState(false);
     const userId=localStorage.getItem('userId');
 
@@ -144,8 +147,8 @@ const FoodItem = (props) => {
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                        {/*{name.charAt(0)}*/}
-                        {name}
+                        {name.charAt(0)}
+                        {/*{name}*/}
                     </Avatar>
                 }
                 action={
@@ -173,12 +176,17 @@ const FoodItem = (props) => {
                 ): null}
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <DoneIcon onClick={handleClaim}/>
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon onClick={() => setIsOpened(!isOpened)}/>
-                </IconButton>
+                <Tooltip title={"Claim this product"}>
+                    <IconButton aria-label="add to favorites">
+                        <DoneIcon onClick={handleClaim}/>
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title={"Share this product"}>
+                    <IconButton aria-label="share">
+                        <ShareIcon onClick={() => setIsOpened(!isOpened)}/>
+                    </IconButton>
+                </Tooltip>
+
 
 
                 {isOpened && (
@@ -210,7 +218,15 @@ const FoodItem = (props) => {
                 </IconButton>) : unclaim===2 ? (<IconButton aria-label={"unclaim product"}>
                     <DeleteIcon onClick={handleDelete} />
                 </IconButton>) : <></> }
+                {expireSoon && (
+                    <Tooltip title={"This item expires soon!"}>
+                        <IconButton color={"#FF0000"} aria-label={"unclaim product"}>
+                            <ErrorIcon style={{color: red[500]}}  />
+                        </IconButton>
+                    </Tooltip>
 
+
+                )}
             </CardActions>
 
         </Card>

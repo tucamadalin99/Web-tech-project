@@ -44,7 +44,7 @@ const controller = {
                     let diffInTime = expDate.getTime() - presentDate.getTime();
                     let diffInDays = diffInTime / (1000 * 3600 * 24);
                     if (diffInDays <= 3) {
-                        if(prod.expireSoon === null)
+                        if(prod.expireSoon === null || prod.expireSoon===false)
                         await prod.update({
                             expireSoon: true
                         })

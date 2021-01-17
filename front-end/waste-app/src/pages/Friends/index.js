@@ -35,9 +35,10 @@ const useStyles = makeStyles({
 const Friends = () => {
     const [data,setData]=useState({});
     const[currentUserFriends,setCurrentUserFriends]=useState([]);
-    const[friendProducts,setFriendProducts]=useState([]);
+    const[userNames,setUserNames]=useState([]);
     const userProducts=useRef();
     const[friendId,setFriendId]=useState(0);
+    const [name,setName]=useState('');
     // const friendId=useRef(0);
     const classes = useStyles();
     const userId=localStorage.getItem('userId');
@@ -47,9 +48,13 @@ const Friends = () => {
         axios.get('http://localhost:8080/api/getAllUsers',{withCredentials:true})
             .then((response)=> {
                 const {data}=response;
-                console.log('All users:',data);
+                 console.log('All users:',data);
                 setData(data);
                 Object.values(data).map(el => {
+                    const userName=el.firstName+" "+el.lastName;
+                    // console.log('User name:',userName);
+                    console.log('Usernames:',userNames)
+                    setUserNames([...userNames,userName]);
                     if (el.id === parseInt(userId)) {
                         // console.log('EL ID:',el.id)
                         setCurrentUserFriends(el.friends);
@@ -61,10 +66,10 @@ const Friends = () => {
     },[])
 
     useEffect( () => {
-        console.log('Friend id:',friendId);
+        // console.log('Friend id:',friendId);
         userProducts.current=(Object.values(data).filter(user => user.id===friendId).map(el => el.products));
         // setUserProducts(Object.values(data).filter(user => user.id===friendId));
-        console.log('User products:',userProducts.current);
+        // console.log('User products:',userProducts.current);
     },[friendId,userProducts.current])
 
 
@@ -84,7 +89,7 @@ const Friends = () => {
                         const initial=el.firstName.substring(0,1);
                         return(
                             <Grid key={el.id} item xs={1}>
-                                <Friend name={name} initial={initial} id={el.id} />
+                                <Friend name={name} avatarId={el.id} initial={initial} id={el.id} />
                             </Grid>
                         )
                     })}
@@ -97,16 +102,18 @@ const Friends = () => {
                         </Typography>
                         <Grid xs={10} container wrap={"nowrap"} direction={"column"} alignItems={"center"}>
                             {Object.values(currentUserFriends).map(el => {
+                                console.log('UserNames:',userNames);
+                                const name=data.find(user => user.id===el.id).firstName+" "+data.find(user => user.id===el.id).lastName;
                                 // console.log("EL:",el)
                                 return (
 
                                     <Grid key={el.id} item  direction={"column"}>
                                         <List component="nav" aria-label="main mailbox folders">
-                                            <ListItem button onClick={() => setFriendId(el.id)}>
+                                            <ListItem button onClick={() => {setName(name); setFriendId(el.id) }}>
                                                 <ListItemIcon>
                                                     <PersonIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary={el.id} />
+                                                <ListItemText primary={name} />
                                             </ListItem>
                                         </List>
                                     </Grid>
@@ -118,14 +125,14 @@ const Friends = () => {
                     </Grid>
                     <Grid item xs={10}  container  justify={"center"} >
                         <Typography align={"center"} className={'friend-list-header'}  variant="h5" component="h5" >
-                            Friend items
+                            {name? (name+'\'s' + " items") : ''}
                         </Typography>
                         <Grid xs={12} container>
                             {Object.values(data).map(user =>{
                                 if(user.id===friendId) {
                                     return Object.values(user.products).map(product => (
                                         <Grid key={product.id} item xs={4} className={'food-item'} justify={"center"}>
-                                            <FoodItem 
+                                            <FoodItem
                                                       id={product.id}
                                                       name={product.name}
                                                       expireDate={product.expireDate}

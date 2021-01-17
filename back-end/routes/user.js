@@ -25,7 +25,7 @@ router.get('/success', async (req, res) => {
 
 router.delete('/logout', checkNotAuth, async (req, res) => {
     req.logOut();
-    res.redirect('/api/logoutInfo');
+    res.status(200).send({message:"Logged out"});
 })
 
 router.get('/getUser', async(req,res) => {

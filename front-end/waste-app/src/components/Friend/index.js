@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 });
 const Friend = (props) => {
     toast.configure();
-    const {id,name,initial, checkbox,sendData}=props;
+    const {id,name,initial, checkbox,sendData, avatarId}=props;
     const classes = useStyles();
     const [checked,setChecked]=useState(false);
 
@@ -72,7 +72,7 @@ const Friend = (props) => {
         <Card className={'friend-container'} variant="outlined">
             <CardContent className={'card-content'}>
                <Avatar>
-                   {initial}
+                   {avatarId}
                </Avatar>
                 <Typography variant="p" component="p" className={'friend-name'}>
                     {name}

@@ -80,19 +80,19 @@ const Groups = () => {
     }, [])
 
     groups=Object.values(friendsData).map(el => {
-        if(el.id===parseInt(userId)) {
+        if(el.id===parseInt(userId) && el.groups) {
             return el.groups;
         }
     });
     console.log('Groups:',groups);
     let groupsTest=groups.map(group => {
-        if(group!==undefined) {
+        if(typeof (group)!=undefined) {
             return group;
         }
     })
     console.log('Groups test:',groupsTest);
 
-    let groups2=groups[parseInt(userId)-1];
+    let groups2=groups[parseInt(userId)+1];
     console.log('Groups:', groups2);
     const handleModalOpen = () => {
         setIsModalOpened(true);

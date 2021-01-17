@@ -26,6 +26,10 @@ import GroupIcon from '@material-ui/icons/Group';
 import {makeStyles} from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {toast} from 'react-toastify';
+import {useHistory, withRouter} from "react-router-dom";
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+
 
 const useStyles = makeStyles({
     root: {
@@ -43,6 +47,10 @@ const useStyles = makeStyles({
 });
 
 const Navigation = ({children}) => {
+    toast.configure();
+    const history = useHistory();
+
+
     const classes = useStyles();
     const [state, setState] = React.useState({
         left: false,
@@ -123,11 +131,20 @@ const Navigation = ({children}) => {
                             </ListItemIcon>
                             <ListItemText>Profile</ListItemText>
                         </ListItem>
-                    </List>
+
                     <Divider/>
+                    </List>
+
                 </Grid>
+
                 <Grid item xs={12}>
                     <List>
+                        <ListItem button component={Link} to={'/'}>
+                            <ListItemIcon>
+                                <FastfoodIcon/>
+                            </ListItemIcon>
+                            <ListItemText>All food</ListItemText>
+                        </ListItem>
                         {drawerOptions.map((value, index) => (
                             <ListItem
                                 button
@@ -157,13 +174,24 @@ const Navigation = ({children}) => {
     );
 
     const handleLogout = () => {
-        axios.delete(`http://localhost:8080/api/logout`, {useCredentials: true})
+        axios.delete(`http://localhost:8080/api/logout`, {withCredentials: true})
             .then(() => {
                 console.log('Logout!');
+                toast.success(`Logged out successfully`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
                 document.cookie="cookieLogin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                history.push('/login');
             })
             .catch((error) => {
                 console.log(error);
+
             })
     };
 

@@ -88,8 +88,15 @@ const Dashboard = () => {
                         if((product.categoryId===category || category===0) && product.status==='available' && product.userId!==parseInt(userId) && product.name.toLowerCase().includes(filter))
                         return (
                             <Grid key={product.id} item xs={4} className={'food-item'}>
-                                <FoodItem unclaim={0} id={product.id} name={product.name} expireDate={product.expireDate} brand={product.brand}
-                                          price={product.price} count={product.count} objectUserId={product.userId} />
+                                <FoodItem unclaim={0}
+                                          id={product.id}
+                                          name={product.name}
+                                          expireDate={product.expireDate}
+                                          expireSoon={product.expireSoon}
+                                          brand={product.brand}
+                                          price={product.price}
+                                          count={product.count}
+                                          objectUserId={product.userId} />
                             </Grid>
                         )
 
