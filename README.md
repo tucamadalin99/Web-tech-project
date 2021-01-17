@@ -5,7 +5,7 @@
 `` The application prevents food waste and encourages people to giveaway food that is not eaten and usually will end up in the trash can. ``
 
 ### DB Schema:
-![schema](https://ibb.co/vV83jgS)
+![schema](https://i.ibb.co/Fmt5DNF/updated-schema.jpg)
 
 ### RESTful API:
 
