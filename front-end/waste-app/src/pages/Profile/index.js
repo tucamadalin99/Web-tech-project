@@ -50,7 +50,9 @@ const Profile = () => {
             .then((response) => {
                 const {data} = response;
                 setProfileData(data);
-                setEditedData({firstName:data.firstName, lastName:data.lastName, email:data.email, adress:data.adress});
+                console.log('Data:',data);
+                setEditedData({firstName:data.firstName, lastName:data.lastName, email:data.email, address:data.address});
+                console.log('Set edited data:',editedData);
             })
             .catch((error) => {
                 console.log('Error:', error);
@@ -110,7 +112,7 @@ const Profile = () => {
     }
 
 
-    const {id, firstName, lastName, email, adress, type} = profileData;
+    const {id, firstName, lastName, email, address, type} = profileData;
 
 
 
@@ -197,7 +199,7 @@ const Profile = () => {
                                                 id="adress"
                                                 label="Adress"
                                                 name="adress"
-                                                value={editedData.adress}
+                                                value={editedData.address}
                                                 onChange={handleInputChange}
                                                 autoFocus
                                             />
@@ -256,7 +258,7 @@ const Profile = () => {
                     </div>
                     <div className="profile-container-item">
                         <p>Adress:</p>
-                        <p>{adress}</p>
+                        <p>{address}</p>
                     </div>
                     <div className="profile-container-item">
                         <p>Type</p>
