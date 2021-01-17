@@ -95,39 +95,37 @@ const Friends = () => {
                         <Typography className={'friend-list-header'}  variant="h5" component="h5" >
                             Friend list
                         </Typography>
+                        <Grid xs={10} container wrap={"nowrap"} direction={"column"} alignItems={"center"}>
+                            {Object.values(currentUserFriends).map(el => {
+                                // console.log("EL:",el)
+                                return (
 
-                        {Object.values(currentUserFriends).map(el => {
-                            // console.log("EL:",el)
+                                    <Grid key={el.id} item  direction={"column"}>
+                                        <List component="nav" aria-label="main mailbox folders">
+                                            <ListItem button onClick={() => setFriendId(el.id)}>
+                                                <ListItemIcon>
+                                                    <PersonIcon />
+                                                </ListItemIcon>
+                                                <ListItemText primary={el.id} />
+                                            </ListItem>
+                                        </List>
+                                    </Grid>
+                                )
+                            })}
+                        </Grid>
 
-                            return (
-
-                                <Grid key={el.id} item xs={8}>
-                                    <List component="nav" aria-label="main mailbox folders">
-                                        <ListItem button onClick={() => setFriendId(el.id)}>
-                                            <ListItemIcon>
-                                                <PersonIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary={el.id} />
-                                        </ListItem>
-                                    </List>
-                                </Grid>
-                            )
-                        })}
 
                     </Grid>
-                    <Grid item xs={10} container justify={"center"}>
+                    <Grid item xs={10}  container  justify={"center"} >
                         <Typography align={"center"} className={'friend-list-header'}  variant="h5" component="h5" >
                             Friend items
                         </Typography>
-                        {Object.values(data).map(user => {
-                            if(user.id===friendId) {
-                                // console.log('Friend products:',friendProducts);
-                                Object.values(user.products).map(product => {
-                                    // console.log('Found product:',product);
-                                    return (
-                                        <Grid key={product.id} item xs={4} className={'food-item'}>
-                                            <p>Item</p>
-                                            <FoodItem unclaim={2}
+                        <Grid xs={12} container>
+                            {Object.values(data).map(user =>{
+                                if(user.id===friendId) {
+                                    return Object.values(user.products).map(product => (
+                                        <Grid key={product.id} item xs={4} className={'food-item'} justify={"center"}>
+                                            <FoodItem 
                                                       id={product.id}
                                                       name={product.name}
                                                       expireDate={product.expireDate}
@@ -137,30 +135,31 @@ const Friends = () => {
                                                       status={product.status}
                                             />
                                         </Grid>
-                                    )
-                                })
-                            }
-                        })}
+                                    ))
+                                }
+                            })}
+                        </Grid>
 
 
-                        { (friendId!==0 && userProducts.current[0]) ?
-                            Object.values(userProducts.current[0]).map(product => {
-                                console.log('Pula');
-                            return (
-                                <Grid key={product.id} item xs={4} className={'food-item'}>
-                                    <p>Item</p>
-                                    <FoodItem unclaim={2}
-                                              id={product.id}
-                                              name={product.name}
-                                              expireDate={product.expireDate}
-                                              brand={product.brand}
-                                              price={product.price}
-                                              count={product.count}
-                                              status={product.status}
-                                    />
-                                </Grid>
-                            )
-                        }) : null}
+
+                        {/*{ (friendId!==0 && userProducts.current[0]) ?*/}
+                        {/*    Object.values(userProducts.current[0]).map(product => {*/}
+                        {/*        console.log('Product:',product);*/}
+                        {/*    return (*/}
+                        {/*        <Grid key={product.id} item xs={4} className={'food-item'}>*/}
+                        {/*            <p>Item</p>*/}
+                        {/*            <FoodItem unclaim={2}*/}
+                        {/*                      id={product.id}*/}
+                        {/*                      name={product.name}*/}
+                        {/*                      expireDate={product.expireDate}*/}
+                        {/*                      brand={product.brand}*/}
+                        {/*                      price={product.price}*/}
+                        {/*                      count={product.count}*/}
+                        {/*                      status={product.status}*/}
+                        {/*            />*/}
+                        {/*        </Grid>*/}
+                        {/*    )*/}
+                        {/*}) : null}*/}
                     </Grid>
 
                 </Grid>

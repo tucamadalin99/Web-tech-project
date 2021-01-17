@@ -49,7 +49,7 @@ const FoodItem = (props) => {
     const userId=localStorage.getItem('userId');
 
     const shareUrl = `http://food-waste.com/${id}`;
-    console.log('User id:',userId,'id:',id);
+    // console.log('User id:',userId,'id:',id);
     const postTitle = `Hi everyone! I have some spare ${name} that I want to share with you!`
     toast.configure();
     const handleClaim = () => {
