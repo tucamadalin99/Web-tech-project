@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Navigation from "../../components/Navigation";
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import Dashboard from "../Dashboard";
 import Food from "../Food";
 import Groups from "../Groups";
@@ -27,6 +27,7 @@ const Homepage = () => {
                 <Switch>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
+                    <Route render={() => <Redirect to={{pathname: "/"}} />} />
                 </Switch>
                 <Navigation/>
                 <Switch>

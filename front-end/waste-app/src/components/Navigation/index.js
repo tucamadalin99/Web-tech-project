@@ -29,6 +29,7 @@ import axios from 'axios';
 import {toast} from 'react-toastify';
 import {useHistory, withRouter} from "react-router-dom";
 import FastfoodIcon from '@material-ui/icons/Fastfood';
+import './style.scss'
 
 
 const useStyles = makeStyles({
@@ -202,7 +203,7 @@ const Navigation = ({children}) => {
                         >
                             <MenuIcon/>
                         </IconButton>
-                        <Typography variant="h6">Food waste app</Typography>
+                        <Typography variant="h6"><Link to={"/"} className={'app-title'} >Food waste app</Link></Typography>
 
                         <Drawer
                             anchor="left"
