@@ -54,11 +54,11 @@ const Groups = () => {
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [users, setUsers] = useState('');
+    const [groups,setGroups]=useState([]);
     const [groupId, setGroupId] = useState('');
     const [checked,setChecked]=useState([0]);
     const id=useRef([]);
     const userId = localStorage.getItem('userId');
-    let groups=[];
 
     console.log('User id:', userId);
     toast.configure();
@@ -79,18 +79,14 @@ const Groups = () => {
             })
     }, [])
 
-    groups=Object.values(friendsData).map(el => {
-        if(el.id===parseInt(userId) && el.groups) {
+    Object.values(friendsData).map(el => {
+        if(el.id === parseInt(userId) && el.groups) {
+            console.log('Group line 85:',el.groups)
+            if(groups!==el.groups)
+            setGroups(el.groups);
             return el.groups;
         }
     });
-    console.log('Groups:',groups);
-    let groupsTest=groups.map(group => {
-        if(typeof (group)!=undefined) {
-            return group;
-        }
-    })
-    console.log('Groups test:',groupsTest);
 
     let groups2=groups[parseInt(userId)+1];
     console.log('Groups:', groups2);
@@ -290,7 +286,7 @@ const Groups = () => {
                                             className={classes.submit}
                                             onClick={handleAddGroup}
                                         >
-                                            Add product
+                                            Add group
                                         </Button>
                                     </Grid>
 
@@ -329,7 +325,7 @@ const Groups = () => {
                         Your groups
                     </Typography>
                     <List dense className={classes.root}>
-                    {groups2?.map(group => {
+                    {groups?.map(group => {
                         const labelId=`group-${group.id}`;
                         const name=group.groupName;
                         // return <p key={group.id}>{group.groupName} {groupTypeArray[group.groupType]}</p>

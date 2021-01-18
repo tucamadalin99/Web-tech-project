@@ -20,25 +20,6 @@ const Homepage = () => {
     // },cookie)
     // const isAuth=localStorage.getItem("isAuth");
     // console.log('Is auth:',isAuth);
-    const [isAuth,setIsAuth]=useState(false);
-    let cookie=document.cookie.split(";");
-    console.log('Cookie:',cookie);
-    // for(let i=0;i<cookie.length;i++) {
-    //     console.log('Cookie i:',cookie[i])
-    //     if(cookie[i].includes('cookieLogin')) {
-    //         console.log('Logged!')
-    //         setIsAuth(true);
-    //     }
-    // }
-
-    useEffect(() => {
-        for(let i=0;i<cookie.length;i++) {
-            if(cookie[i].substring(0,11)==='cookieLogin') {
-                console.log('Logged!')
-                setIsAuth(true);
-            }
-        }
-    },[])
 
     return (
         <BrowserRouter>
@@ -48,7 +29,6 @@ const Homepage = () => {
                     <Route exact path="/register" component={Register}/>
                 </Switch>
                 <Navigation/>
-                {isAuth && (<p>Is auth!</p>)}
                 <Switch>
                     <Route exact path="/" component={Dashboard}>
                         {/*{isAuth ? <Redirect to={"/"} /> : <Redirect to={"/login"}/>}*/}

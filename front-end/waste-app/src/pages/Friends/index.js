@@ -89,7 +89,7 @@ const Friends = () => {
                         const initial=el.firstName.substring(0,1);
                         return(
                             <Grid key={el.id} item xs={1}>
-                                <Friend name={name} avatarId={el.id} initial={initial} id={el.id} />
+                                <Friend name={name} avatarId={initial} initial={initial} id={el.id} />
                             </Grid>
                         )
                     })}
