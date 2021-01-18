@@ -50,12 +50,10 @@ const Groups = () => {
 
     const [friendsData, setFriendsData] = useState({});
     const [isModalOpened, setIsModalOpened] = useState(false);
-    const [isModal2Opened, setIsModal2Opened] = useState(false);
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [users, setUsers] = useState('');
     const [groups,setGroups]=useState([]);
-    const [groupId, setGroupId] = useState('');
     const [checked,setChecked]=useState([0]);
     const id=useRef([]);
     const userId = localStorage.getItem('userId');
@@ -63,7 +61,6 @@ const Groups = () => {
     console.log('User id:', userId);
     toast.configure();
 
-      const groupTypeArray=['Normal','Vegetarian','Vegan','Carnivor'];
 
     const data = {
         groupName: name,
@@ -98,21 +95,12 @@ const Groups = () => {
         setIsModalOpened(false);
     };
 
-    const handleModal2Open = () => {
-        setIsModal2Opened(true);
-    };
-
-    const handleModal2Close = () => {
-        setIsModal2Opened(false);
-    };
 
     const handleChange = (e) => {
         setType(e.target.value);
     }
 
-    const handleChange2 = (e) => {
 
-    }
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);

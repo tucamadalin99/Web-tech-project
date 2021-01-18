@@ -85,10 +85,6 @@ const Navigation = ({children}) => {
             link: '/groups',
         },
         {
-            text: 'Achievements',
-            link: '/achievements',
-        },
-        {
             text: 'Friends',
             link: '/friends',
         },
@@ -158,9 +154,7 @@ const Navigation = ({children}) => {
                                         <KitchenIcon/>
                                     ) : index % 4 === 1 ? (
                                         <GroupIcon/>
-                                    ) : index%4===2 ? (
-                                        <EmojiEventsIcon/>
-                                    ) : (<GroupIcon/>) }
+                                    ) :  (<GroupIcon/>) }
                                 </ListItemIcon>
                                 <ListItemText primary={value.text}/>
                             </ListItem>

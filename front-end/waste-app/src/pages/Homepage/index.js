@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Navigation from "../../components/Navigation";
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Dashboard from "../Dashboard";
 import Food from "../Food";
 import Groups from "../Groups";
