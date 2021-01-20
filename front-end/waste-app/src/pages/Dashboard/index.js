@@ -72,10 +72,12 @@ const Dashboard = () => {
                                 onChange={handleChange}
                             >
                                 <MenuItem value={0}>All items</MenuItem>
-                                <MenuItem value={1}>Normal</MenuItem>
-                                <MenuItem value={2}>Vegetarian</MenuItem>
-                                <MenuItem value={3}>Vegan</MenuItem>
-                                <MenuItem value={4}>Carnivor</MenuItem>
+                                <MenuItem value={1}>Fruit</MenuItem>
+                                <MenuItem value={2}>Vegetable</MenuItem>
+                                <MenuItem value={3}>Pastry</MenuItem>
+                                <MenuItem value={4}>Canned Food</MenuItem>
+                                <MenuItem value={5}>Cooked Food</MenuItem>
+                                <MenuItem value={6}>Raw Food</MenuItem>
                             </Select>
                         </FormControl>
                     </div>
