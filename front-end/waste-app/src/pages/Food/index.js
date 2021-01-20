@@ -46,6 +46,7 @@ const Food = () => {
     const userId = localStorage.getItem('userId');
     const [isModalOpened, setIsModalOpened] = useState(false);
     const [userData,setUserData]=useState({});
+    const [allUsersData,setAllUsersData]=useState([]);
     const [foodData, setFoodData] = useState({
         name: '',
         expireDate: '',
@@ -74,6 +75,13 @@ const Food = () => {
             })
             .catch((error) => {
                 console.log('Error:', error);
+            })
+        axios.get('http://localhost:8080/api/getAllUsers',{withCredentials:true})
+            .then((response)=> {
+                const {data}=response;
+                console.log('All users:',data);
+                setAllUsersData(data);
+
             })
     }, [])
 
@@ -301,8 +309,8 @@ const Food = () => {
                     </Typography>
 
                     <Grid container spacing={2} className={'food-item-container'}>
-
                         {Object.values(productData).map(product => {
+
                             if (product.userId === parseInt(userId) && (product.categoryId === category || category===0))
                                 return (
                                     <Grid key={product.id} item xs={4} className={'food-item'}>
@@ -310,6 +318,7 @@ const Food = () => {
                                                   id={product.id}
                                                   name={product.name}
                                                   expireDate={product.expireDate}
+                                                  expireSoon={product.expireSoon}
                                                   brand={product.brand}
                                                   price={product.price}
                                                   count={product.count}
@@ -330,11 +339,21 @@ const Food = () => {
 
                         {Object.values(productData).map(product => {
                             const name=userData.firstName+" "+userData.lastName;
+                            let address=''
+                            allUsersData.forEach(user => {
+                                if(user.id===product.userId) {
+                                    address=user.address;
+                                }
+                            })
+                            console.log('Adress:',address)
                             if (product.status===name)
                                 return (
                                     <Grid key={product.id} item xs={4} className={'food-item'}>
-                                        <FoodItem unclaim={1} id={product.id} name={product.name}
+                                        <FoodItem unclaim={1}
+                                                  id={product.id}
+                                                  name={product.name}
                                                   expireDate={product.expireDate}
+                                                  address={address}
                                                   brand={product.brand}
                                                   price={product.price}
                                                   count={product.count}

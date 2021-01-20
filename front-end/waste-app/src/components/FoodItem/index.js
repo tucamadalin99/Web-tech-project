@@ -16,11 +16,10 @@ import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import {FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton} from 'react-share';
 import axios from 'axios';
 import ErrorIcon from '@material-ui/icons/Error';
-import {toast, ToastContainer} from 'react-toastify';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.scss';
 import Tooltip from "@material-ui/core/Tooltip";
-import { green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,17 +46,32 @@ const useStyles = makeStyles((theme) => ({
 
 const FoodItem = (props) => {
     const classes = useStyles();
-    const {name, expireDate, brand, price, count, id, objectUserId, unclaim, status, expireSoon} = props;
+    const {
+        name,
+        expireDate,
+        brand,
+        price,
+        count,
+        address,
+        id,
+        objectUserId,
+        unclaim,
+        status,
+        expireSoon
+    } = props;
     const [isOpened, setIsOpened] = useState(false);
-    const userId=localStorage.getItem('userId');
+    const userId = localStorage.getItem('userId');
 
     const shareUrl = `http://food-waste.com/${id}`;
     // console.log('User id:',userId,'id:',id);
     const postTitle = `Hi everyone! I have some spare ${name} that I want to share with you!`
     toast.configure();
     const handleClaim = () => {
-        axios.put(`http://localhost:8080/api/claimProduct/${objectUserId}/${id}`,{userId:userId,id:id},{withCredentials: true})
-            .then(() =>{
+        axios.put(`http://localhost:8080/api/claimProduct/${objectUserId}/${id}`, {
+            userId: userId,
+            id: id
+        }, {withCredentials: true})
+            .then(() => {
                 toast.success(`Product ${name} claimed succesfully`, {
                     position: "top-right",
                     autoClose: 2000,
@@ -70,8 +84,8 @@ const FoodItem = (props) => {
                 console.log('Product claimed successfully')
             })
             .catch((error) => {
-                console.log('User id:',userId,'id:',id);
-                console.log('Error:',error.response.data.message);
+                console.log('User id:', userId, 'id:', id);
+                console.log('Error:', error.response.data.message);
                 toast.error(error.response.data.message, {
                     position: "top-right",
                     autoClose: 2000,
@@ -85,9 +99,12 @@ const FoodItem = (props) => {
     };
 
     const handleUnclaim = () => {
-        console.log('Unhandle Claim datA:',userId,id);
-        axios.put(`http://localhost:8080/api/unclaimProduct/${objectUserId}/${id}`,{userId:objectUserId,id:id},{withCredentials:true})
-            .then(() =>{
+        console.log('Unhandle Claim datA:', userId, id);
+        axios.put(`http://localhost:8080/api/unclaimProduct/${objectUserId}/${id}`, {
+            userId: objectUserId,
+            id: id
+        }, {withCredentials: true})
+            .then(() => {
                 toast.success(`Product ${name} unclaimed succesfully`, {
                     position: "top-right",
                     autoClose: 2000,
@@ -99,8 +116,8 @@ const FoodItem = (props) => {
                 });
             })
             .catch((error) => {
-                console.log('User id:',userId,'id:',id);
-                console.log('Error:',error.response.data.message);
+                console.log('User id:', userId, 'id:', id);
+                console.log('Error:', error.response.data.message);
                 toast.error(error.response.data.message, {
                     position: "top-right",
                     autoClose: 2000,
@@ -114,8 +131,8 @@ const FoodItem = (props) => {
     }
 
     const handleDelete = () => {
-        axios.delete(`http://localhost:8080/api/deleteProduct/${id}`,{withCredentials:true})
-            .then(() =>{
+        axios.delete(`http://localhost:8080/api/deleteProduct/${id}`, {withCredentials: true})
+            .then(() => {
                 toast.success(`Product ${name} deleted succesfully`, {
                     position: "top-right",
                     autoClose: 2000,
@@ -128,8 +145,8 @@ const FoodItem = (props) => {
                 console.log('Product claimed successfully')
             })
             .catch((error) => {
-                console.log('User id:',userId,'id:',id);
-                console.log('Error:',error.response.data.message);
+                console.log('User id:', userId, 'id:', id);
+                console.log('Error:', error.response.data.message);
                 toast.error(error.response.data.message, {
                     position: "top-right",
                     autoClose: 2000,
@@ -161,19 +178,25 @@ const FoodItem = (props) => {
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                Brand: {brand}
-            </Typography>
+                    Brand: {brand}
+                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     Price: {price}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     Count: {count}
                 </Typography>
-                {(status !=='available' && status) ?(
+                {address && (
                     <Typography variant="body2" color="textSecondary" component="p">
-                       Claimed by {status}
+                        Address: {address}
                     </Typography>
-                ): null}
+                )}
+
+                {(status !== 'available' && status) ? (
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Claimed by {status}
+                    </Typography>
+                ) : null}
             </CardContent>
             <CardActions disableSpacing>
                 <Tooltip title={"Claim this product"}>
@@ -186,7 +209,6 @@ const FoodItem = (props) => {
                         <ShareIcon onClick={() => setIsOpened(!isOpened)}/>
                     </IconButton>
                 </Tooltip>
-
 
 
                 {isOpened && (
@@ -213,15 +235,26 @@ const FoodItem = (props) => {
                     </>
                 )}
 
-                {unclaim===1 ? (<IconButton aria-label={"unclaim product"}>
-                    <RemoveCircleIcon onClick={handleUnclaim} />
-                </IconButton>) : unclaim===2 ? (<IconButton aria-label={"unclaim product"}>
-                    <DeleteIcon onClick={handleDelete} />
-                </IconButton>) : <></> }
+                {
+                    unclaim === 1 ? (
+                            <Tooltip title={"Unclaim this product"}>
+                                <IconButton aria-label={"unclaim product"}>
+                                    <RemoveCircleIcon onClick={handleUnclaim}/>
+                                </IconButton>
+                            </Tooltip>)
+                        : unclaim === 2 ?
+                        (
+                            <Tooltip title={"Delete this product"}>
+                                <IconButton aria-label={"delete product"}>
+                                    <DeleteIcon onClick={handleDelete}/>
+                                </IconButton>
+                            </Tooltip>) :
+                        <></>
+                }
                 {expireSoon && (
                     <Tooltip title={"This item expires soon!"}>
                         <IconButton color={"#FF0000"} aria-label={"unclaim product"}>
-                            <ErrorIcon style={{color: red[500]}}  />
+                            <ErrorIcon style={{color: red[500]}}/>
                         </IconButton>
                     </Tooltip>
 

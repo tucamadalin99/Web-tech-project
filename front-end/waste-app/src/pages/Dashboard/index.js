@@ -16,7 +16,7 @@ const Dashboard = () => {
     const [productData, setProductData] = useState([]);
     const [category,setCategory]=useState(0);
     const[filter,setFilter]=useState("");
-
+    const [allUsersData,setAllUsersData]=useState([]);
     const userId = localStorage.getItem('userId');
     console.log('User ID:',userId);
 
@@ -28,6 +28,13 @@ const Dashboard = () => {
                 const {results} = data;
                 console.log('Data:', data);
                 setProductData(data);
+            })
+        axios.get('http://localhost:8080/api/getAllUsers',{withCredentials:true})
+            .then((response)=> {
+                const {data}=response;
+                console.log('All users:',data);
+                setAllUsersData(data);
+
             })
     }, [])
 
@@ -87,6 +94,12 @@ const Dashboard = () => {
                 <Grid container spacing={2} className={'food-item-container'}>
 
                     {Object.values(productData).map(product => {
+                        let address=''
+                        allUsersData.forEach(user => {
+                            if(user.id===product.userId) {
+                                address=user.address;
+                            }
+                        })
                         if((product.categoryId===category || category===0) && product.status==='available' && product.userId!==parseInt(userId) && product.name.toLowerCase().includes(filter))
                         return (
                             <Grid key={product.id} item xs={4} className={'food-item'}>
@@ -95,6 +108,7 @@ const Dashboard = () => {
                                           name={product.name}
                                           expireDate={product.expireDate}
                                           expireSoon={product.expireSoon}
+                                          address={address}
                                           brand={product.brand}
                                           price={product.price}
                                           count={product.count}

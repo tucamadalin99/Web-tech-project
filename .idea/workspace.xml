@@ -22,6 +22,7 @@
     <list default="true" id="01efc992-8eee-4669-81de-67f377394308" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/components/FoodItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/components/FoodItem/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Dashboard/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/waste-app/src/pages/Food/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/waste-app/src/pages/Food/index.js" afterDir="false" />
     </list>
@@ -123,7 +124,7 @@
       <workItem from="1611009874874" duration="1782000" />
       <workItem from="1611041707066" duration="53000" />
       <workItem from="1611062996931" duration="1291000" />
-      <workItem from="1611127388383" duration="601000" />
+      <workItem from="1611127388383" duration="4008000" />
     </task>
     <task id="LOCAL-00001" summary="Front end setup + Login + Register">
       <created>1607033418321</created>
@@ -271,6 +272,10 @@
     </state>
     <state x="2660" y="298" key="FileChooserDialogImpl/-1920.0.1920.1080/0.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1607894470688" />
     <state x="2660" y="298" key="FileChooserDialogImpl/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1611041758862" />
+    <state x="1920" y="398" key="FileDocumentManager.FileCacheConflict" timestamp="1611128324348">
+      <screen x="1920" y="3" width="1920" height="1080" />
+    </state>
+    <state x="1920" y="398" key="FileDocumentManager.FileCacheConflict/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1611128324348" />
     <state width="1877" height="203" key="GridCell.Tab.0.bottom" timestamp="1611127392966">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
@@ -315,17 +320,17 @@
     <state width="1877" height="271" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@0.0.1920.1080" timestamp="1610742024953" />
     <state width="1877" height="271" key="GridCell.Tab.0.right/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610761842751" />
     <state width="1877" height="165" key="GridCell.Tab.0.right/3840.-8.1536.864/-1920.3.1920.1080/1920.1.1920.1080/0.0.1920.1080@1920.1.1920.1080" timestamp="1609775079539" />
-    <state x="2191" y="133" key="MergeDialog" timestamp="1610921006125">
+    <state x="2191" y="133" key="MergeDialog" timestamp="1611128315969">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
     <state x="271" y="130" key="MergeDialog/-1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1610660863043" />
-    <state x="2191" y="133" key="MergeDialog/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1610921006125" />
+    <state x="2191" y="133" key="MergeDialog/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1611128315969" />
     <state x="2191" y="130" key="MergeDialog/0.0.1536.864/1920.0.1920.1080@1920.0.1920.1080" timestamp="1608579157077" />
-    <state x="2518" y="304" key="MultipleFileMergeDialog" timestamp="1610921008335">
+    <state x="2518" y="304" key="MultipleFileMergeDialog" timestamp="1611128315973">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
     <state x="598" y="301" key="MultipleFileMergeDialog/-1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1610660865806" />
-    <state x="2518" y="304" key="MultipleFileMergeDialog/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1610921008335" />
+    <state x="2518" y="304" key="MultipleFileMergeDialog/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1611128315973" />
     <state x="2518" y="301" key="MultipleFileMergeDialog/0.0.1536.864/1920.0.1920.1080@1920.0.1920.1080" timestamp="1608579157082" />
     <state x="794" y="463" key="NewPhpFileDialog" timestamp="1610664536564">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -351,21 +356,21 @@
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
     <state x="2689" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610761697598" />
-    <state x="2085" y="103" width="1459" height="799" maximized="true" key="dock-window-1" timestamp="1610918323979">
-      <screen x="1920" y="3" width="1920" height="1080" />
+    <state x="255" y="92" width="1408" height="781" key="dock-window-1" timestamp="1611129549019">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="2085" y="103" width="1459" height="799" maximized="true" key="dock-window-1/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1610918323979" />
+    <state x="255" y="92" width="1408" height="781" key="dock-window-1/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1611129549019" />
     <state x="66" y="112" width="1484" height="813" maximized="true" key="dock-window-1/0.0.1536.864/1920.0.1920.1080@1920.0.1920.1080" timestamp="1608747150138" />
     <state x="117" y="113" width="1459" height="767" key="dock-window-1/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610745381917" />
     <state x="178" y="110" width="1459" height="799" key="dock-window-2" timestamp="1610918323979">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="178" y="110" width="1459" height="799" key="dock-window-2/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1610918323979" />
-    <state x="2587" y="247" width="585" height="592" key="find.popup" timestamp="1610924388337">
+    <state x="2587" y="247" width="585" height="592" key="find.popup" timestamp="1611134960581">
       <screen x="1920" y="3" width="1920" height="1080" />
     </state>
     <state x="667" y="244" width="585" height="592" key="find.popup/-1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1610670618199" />
-    <state x="2587" y="247" width="585" height="592" key="find.popup/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1610924388337" />
+    <state x="2587" y="247" width="585" height="592" key="find.popup/-1920.0.1920.1080/1920.3.1920.1080/0.0.1920.1080@1920.3.1920.1080" timestamp="1611134960581" />
     <state x="2587" y="244" width="585" height="592" key="find.popup/0.0.1536.864/1920.0.1920.1080@1920.0.1920.1080" timestamp="1608754288945" />
     <state x="2587" y="247" width="585" height="592" key="find.popup/0.0.1920.1080/-1920.0.1920.1080/1920.3.1920.1080@1920.3.1920.1080" timestamp="1610753029877" />
     <state x="2587" y="244" width="585" height="592" key="find.popup/1920.0.1920.1080/0.0.1920.1080/-1920.0.1920.1080@1920.0.1920.1080" timestamp="1607028824258" />
