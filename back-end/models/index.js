@@ -47,7 +47,6 @@ module.exports = {
     Group,
     Friendship,
     Groupship,
-
     Friend,
     connection:db,
 }
