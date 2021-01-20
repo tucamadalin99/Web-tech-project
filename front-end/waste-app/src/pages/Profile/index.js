@@ -145,7 +145,7 @@ const Profile = () => {
                     >
                         <Fade in={isModalOpened}>
                             <div className={classes.paper}>
-                                <div className="modal-header">Add food</div>
+                                <div className="modal-header">Update Profile</div>
                                 <form className={classes.form} noValidate>
                                     <Grid container spacing={2}>
                                         <Grid item xs={12}>

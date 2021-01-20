@@ -268,6 +268,7 @@ const Food = () => {
                                                     <MenuItem value={2}>Vegetarian</MenuItem>
                                                     <MenuItem value={3}>Vegan</MenuItem>
                                                     <MenuItem value={4}>Carnivor</MenuItem>
+                                                    <MenuItem value={6}>Carnivor</MenuItem>
                                                 </Select>
                                             </FormControl>
                                         </Grid>

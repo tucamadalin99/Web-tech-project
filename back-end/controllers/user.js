@@ -37,24 +37,24 @@ const controller = {
             const users = await UserModel.findAll({
                 include: [ProductModel,GroupModel, FriendModel]
             });
-            const presentDate = new Date();
-            users.forEach(user => {
-                user.products.forEach(async prod => {
-                    let expDate = new Date(prod.expireDate);
-                    let diffInTime = expDate.getTime() - presentDate.getTime();
-                    let diffInDays = diffInTime / (1000 * 3600 * 24);
-                    if (diffInDays <= 3) {
-                        if(prod.expireSoon === null || prod.expireSoon===false)
-                        await prod.update({
-                            expireSoon: true
-                        })
-                    } else
-                        if(prod.expireSoon === null)
-                        await prod.update({
-                            expireSoon: false
-                        })
-                })
-            })
+            // const presentDate = new Date();
+            // users.forEach(user => {
+            //     user.products.forEach(async prod => {
+            //         let expDate = new Date(prod.expireDate);
+            //         let diffInTime = expDate.getTime() - presentDate.getTime();
+            //         let diffInDays = diffInTime / (1000 * 3600 * 24);
+            //         if (diffInDays <= 3) {
+            //             if(prod.expireSoon === null || prod.expireSoon===false)
+            //             await prod.update({
+            //                 expireSoon: true
+            //             })
+            //         } else
+            //             if(prod.expireSoon === null)
+            //             await prod.update({
+            //                 expireSoon: false
+            //             })
+            //     })
+            // })
             res.status(200).send(users);
         } catch {
             res.status(500).send({ message: "Server error!" })
